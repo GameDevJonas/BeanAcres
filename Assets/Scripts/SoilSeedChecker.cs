@@ -3,39 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
-using System;
 
-public class HoeBehaviour : MonoBehaviour
+public class SoilSeedChecker : MonoBehaviour
 {
+    public bool canPlant;
+
+    public SoilBehaviour activeSoil;
+
+    public float overlapRadius;
+    public LayerMask soilMask;
+
+    public GameObject activeParticlePrefab, particles;
+
     public GameObject placementIndicator;
-    public GameObject objToPlace;
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
-    public Animator anim;
 
     void Start()
     {
+        canPlant = false;
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
 
+    // Update is called once per frame
     void Update()
     {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        //if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        //{
-        //    PlaceObject();
-        //}
-    }
-
-    public void PlaceObject()
-    {
-        anim.Play("HoeAnim");
-        if (placementPoseIsValid)
+        Collider[] soils = Physics.OverlapSphere(transform.position, overlapRadius, soilMask);
+        if(soils.Length > 0)
         {
-            Instantiate(objToPlace, PlacementPose.position, PlacementPose.rotation);
+            foreach(Collider soil in soils)
+            {
+                if(soil.GetComponent<SoilBehaviour>().myStage == SoilBehaviour.SoilStage.empty)
+                {
+                    activeSoil = soil.GetComponent<SoilBehaviour>();
+                }
+            }
+        }
+        else
+        {
+            activeSoil = null;
+        }
+
+        if(activeSoil != null && particles == null)
+        {
+            particles = Instantiate(activeParticlePrefab, activeSoil.transform.position, Quaternion.identity);
+        }
+        else if(particles != null && activeSoil == null)
+        {
+            Destroy(particles);
         }
     }
 
@@ -67,5 +86,11 @@ public class HoeBehaviour : MonoBehaviour
             var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
             PlacementPose.rotation = Quaternion.LookRotation(cameraBearing);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, overlapRadius);
     }
 }
