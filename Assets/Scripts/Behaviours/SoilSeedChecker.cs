@@ -20,8 +20,11 @@ public class SoilSeedChecker : MonoBehaviour
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
 
+    SwapTools tools;
+
     void Start()
     {
+        tools = FindObjectOfType<SwapTools>();
         canPlant = false;
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
@@ -32,12 +35,12 @@ public class SoilSeedChecker : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        Collider[] soils = Physics.OverlapSphere(transform.position, overlapRadius, soilMask);
-        if(soils.Length > 0)
+        Collider[] soils = Physics.OverlapSphere(placementIndicator.transform.position, overlapRadius, soilMask);
+        if (soils.Length > 0)
         {
-            foreach(Collider soil in soils)
+            foreach (Collider soil in soils)
             {
-                if(soil.GetComponent<SoilBehaviour>().myStage == SoilBehaviour.SoilStage.empty)
+                if (soil.GetComponent<SoilBehaviour>().myStage == SoilBehaviour.SoilStage.empty)
                 {
                     activeSoil = soil.GetComponent<SoilBehaviour>();
                 }
@@ -48,13 +51,28 @@ public class SoilSeedChecker : MonoBehaviour
             activeSoil = null;
         }
 
-        if(activeSoil != null && particles == null)
+        if (activeSoil != null && particles == null)
         {
             particles = Instantiate(activeParticlePrefab, activeSoil.transform.position, Quaternion.identity);
         }
-        else if(particles != null && activeSoil == null)
+        else if (particles != null && activeSoil == null)
         {
             Destroy(particles);
+        }
+
+        if (particles.transform.position != activeSoil.transform.position && activeSoil != null)
+        {
+            particles.transform.position = activeSoil.transform.position;
+        }
+
+    }
+
+    public void PlantSeed()
+    {
+        if (activeSoil != null)
+        {
+            //Check for current seed
+            activeSoil.PlantSeed(tools.currentSeed);
         }
     }
 
@@ -91,6 +109,13 @@ public class SoilSeedChecker : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, overlapRadius);
+        Gizmos.DrawWireSphere(placementIndicator.transform.position, overlapRadius);
+    }
+
+
+    private void OnDisable()
+    {
+        Destroy(particles);
+        activeSoil = null;
     }
 }

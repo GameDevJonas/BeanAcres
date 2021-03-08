@@ -7,6 +7,8 @@ public class SwapTools : MonoBehaviour
 {
     public enum Tools { hoe, seed, water, none }
     public Tools currentTool;
+    public enum Plants { carrot };
+    public Plants currentSeed;
     public string currentToolString;
     public Image[] buttons;
     public Color selected, unselected;

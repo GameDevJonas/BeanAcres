@@ -7,10 +7,9 @@ public class SoilBehaviour : MonoBehaviour
     public enum SoilStage { empty, planted, growing, done };
     public SoilStage myStage;
 
-    public enum Plants { carrot };
-    public Plants myPlant;
+    public SwapTools.Plants myPlant;
 
-    public bool isDry;
+    public bool isDry, isDone;
     public float dryTimerSet;
     float dryTimer;
 
@@ -46,7 +45,7 @@ public class SoilBehaviour : MonoBehaviour
                 PlantedState();
                 switch (myPlant)
                 {
-                    case Plants.carrot:
+                    case SwapTools.Plants.carrot:
                         carrotSprites[0].SetActive(true);
                         carrotSprites[1].SetActive(false);
                         carrotSprites[2].SetActive(false);
@@ -57,7 +56,7 @@ public class SoilBehaviour : MonoBehaviour
                 GrowingState();
                 switch (myPlant)
                 {
-                    case Plants.carrot:
+                    case SwapTools.Plants.carrot:
                         carrotSprites[0].SetActive(false);
                         carrotSprites[1].SetActive(true);
                         carrotSprites[2].SetActive(false);
@@ -65,9 +64,10 @@ public class SoilBehaviour : MonoBehaviour
                 }
                 break;
             case SoilStage.done:
+                isDone = true;
                 switch (myPlant)
                 {
-                    case Plants.carrot:
+                    case SwapTools.Plants.carrot:
                         carrotSprites[0].SetActive(false);
                         carrotSprites[1].SetActive(false);
                         carrotSprites[2].SetActive(true);
@@ -99,7 +99,7 @@ public class SoilBehaviour : MonoBehaviour
         }
     }
 
-    public void PlantSeed(Plants plant)
+    public void PlantSeed(SwapTools.Plants plant)
     {
         myPlant = plant;
         growTimer = GrowTimerSet;
@@ -119,7 +119,7 @@ public class SoilBehaviour : MonoBehaviour
 
     void PlantedState()
     {
-        if(growTimer <= 0)
+        if (growTimer <= 0)
         {
             growTimer = GrowTimerSet;
             myStage = SoilStage.growing;
@@ -127,6 +127,14 @@ public class SoilBehaviour : MonoBehaviour
         else if (!isDry)
         {
             growTimer -= Time.deltaTime;
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (isDone)
+        {
+            Destroy(this.gameObject);
         }
     }
 
