@@ -132,8 +132,15 @@ public class SoilBehaviour : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (isDone)
+        if (isDone && FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.glove)
         {
+            //Add score and other effects later!
+            Destroy(this.gameObject);
+        }
+        if(FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.shovel)
+        {
+            //Minus points?
+            GameObject.Find("ShovelHand").GetComponent<Animator>().Play("HoeAnim");
             Destroy(this.gameObject);
         }
     }

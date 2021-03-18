@@ -32,6 +32,9 @@ public class SoilSeedChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
+        return;
+#endif
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
