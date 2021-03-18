@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - WaterDroplets
+  - ToolPlaces
   layers:
   - Default
   - TransparentFX
