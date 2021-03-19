@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SoilBehaviour : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class SoilBehaviour : MonoBehaviour
     public SpriteRenderer mySprite;
 
     public List<GameObject> carrotSprites = new List<GameObject>();
+    public List<GameObject> strawberrySprites = new List<GameObject>();
+    public List<GameObject> aubergineSprites = new List<GameObject>();
 
     void Start()
     {
@@ -50,6 +53,16 @@ public class SoilBehaviour : MonoBehaviour
                         carrotSprites[1].SetActive(false);
                         carrotSprites[2].SetActive(false);
                         break;
+                    case SwapTools.Plants.strawberry:
+                        carrotSprites[0].SetActive(true);
+                        carrotSprites[1].SetActive(false);
+                        carrotSprites[2].SetActive(false);
+                        break;
+                    case SwapTools.Plants.aubergine:
+                        carrotSprites[0].SetActive(true);
+                        carrotSprites[1].SetActive(false);
+                        carrotSprites[2].SetActive(false);
+                        break;
                 }
                 break;
             case SoilStage.growing:
@@ -61,6 +74,16 @@ public class SoilBehaviour : MonoBehaviour
                         carrotSprites[1].SetActive(true);
                         carrotSprites[2].SetActive(false);
                         break;
+                    case SwapTools.Plants.strawberry:
+                        carrotSprites[0].SetActive(false);
+                        carrotSprites[1].SetActive(true);
+                        carrotSprites[2].SetActive(false);
+                        break;
+                    case SwapTools.Plants.aubergine:
+                        carrotSprites[0].SetActive(false);
+                        carrotSprites[1].SetActive(true);
+                        carrotSprites[2].SetActive(false);
+                        break;
                 }
                 break;
             case SoilStage.done:
@@ -68,6 +91,16 @@ public class SoilBehaviour : MonoBehaviour
                 switch (myPlant)
                 {
                     case SwapTools.Plants.carrot:
+                        carrotSprites[0].SetActive(false);
+                        carrotSprites[1].SetActive(false);
+                        carrotSprites[2].SetActive(true);
+                        break;
+                    case SwapTools.Plants.strawberry:
+                        carrotSprites[0].SetActive(false);
+                        carrotSprites[1].SetActive(false);
+                        carrotSprites[2].SetActive(true);
+                        break;
+                    case SwapTools.Plants.aubergine:
                         carrotSprites[0].SetActive(false);
                         carrotSprites[1].SetActive(false);
                         carrotSprites[2].SetActive(true);
@@ -114,6 +147,7 @@ public class SoilBehaviour : MonoBehaviour
     public void PickUpPlant()
     {
         //Add plant score
+        FindObjectOfType<SwapTools>().alphaScore += 10;
         Destroy(this.gameObject);
     }
 

@@ -20,7 +20,7 @@ public class SoilSeedChecker : MonoBehaviour
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
 
-    SwapTools tools;
+    public SwapTools tools;
 
     void Start()
     {
@@ -77,6 +77,11 @@ public class SoilSeedChecker : MonoBehaviour
             //Check for current seed
             activeSoil.PlantSeed(tools.currentSeed);
         }
+    }
+
+    public void SwitchSeed(SwapTools.Plants plant)
+    {
+        tools.currentSeed = plant;
     }
 
     private void UpdatePlacementIndicator()

@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SwapTools : MonoBehaviour
 {
     public enum Tools { hoe, seed, water, glove, shovel }
     public Tools currentTool;
-    public enum Plants { carrot };
+    public enum Plants { carrot, strawberry, aubergine };
     public Plants currentSeed;
     public string currentToolString;
     //public Image[] buttons;
     //public Color selected, unselected;
+
+    public int alphaScore;
+    public TextMeshProUGUI scoreText;
 
     public List<GameObject> hoeObjects = new List<GameObject>();
     public List<GameObject> seedObjects = new List<GameObject>();
@@ -46,6 +50,8 @@ public class SwapTools : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        scoreText.text = "Score: " + alphaScore;
+
         switch (currentTool)
         {
             case Tools.hoe:

@@ -16,6 +16,9 @@ public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         tool = GameObject.Find("Glove").GetComponent<ToolIcon>();
         tool.isSelected = true;
         FindObjectOfType<SwapTools>().SwitchTool(tool.name);
+#if UNITY_ANDROID
+        speed /= 2;
+#endif
     }
 
     public void OnBeginDrag(PointerEventData eventData)
