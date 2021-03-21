@@ -8,6 +8,8 @@ public class SoilBehaviour : MonoBehaviour
     public enum SoilStage { empty, planted, growing, done };
     public SoilStage myStage;
 
+    public SwapTools tools;
+
     public SwapTools.Plants myPlant;
 
     public bool isDry, isDone;
@@ -147,7 +149,7 @@ public class SoilBehaviour : MonoBehaviour
     public void PickUpPlant()
     {
         //Add plant score
-        FindObjectOfType<SwapTools>().alphaScore += 10;
+        tools.alphaScore += 10;
         Destroy(this.gameObject);
     }
 
