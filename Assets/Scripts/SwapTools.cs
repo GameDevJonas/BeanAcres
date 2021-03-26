@@ -26,28 +26,13 @@ public class SwapTools : MonoBehaviour
     {
         currentTool = Tools.glove;
         currentToolString = "Glove";
-        //buttons[0].color = unselected;
-        //buttons[1].color = unselected;
-        //buttons[2].color = unselected;
-        foreach (GameObject obj in hoeObjects)
-        {
-            obj.SetActive(false);
-        }
-        foreach (GameObject obj in seedObjects)
-        {
-            obj.SetActive(false);
-        }
-        foreach (GameObject obj in waterObjects)
-        {
-            obj.SetActive(false);
-        }
-        foreach (GameObject obj in shovelObjects)
-        {
-            obj.SetActive(false);
-        }
+        ToolSwitching(hoeObjects, false);
+        ToolSwitching(seedObjects, false);
+        ToolSwitching(waterObjects, false);
+        ToolSwitching(shovelObjects, false);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         scoreText.text = "Score: " + alphaScore;
@@ -97,97 +82,63 @@ public class SwapTools : MonoBehaviour
         if (tool == "Glove")
         {
             currentTool = Tools.glove;
-            foreach (GameObject obj in hoeObjects)
-            {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in seedObjects)
-            {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in waterObjects)
-            {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in shovelObjects)
-            {
-                obj.SetActive(false);
-            }
+            ToolSwitching(hoeObjects, false);
+            ToolSwitching(seedObjects, false);
+            ToolSwitching(waterObjects, false);
+            ToolSwitching(shovelObjects, false);
         }
         if (tool == "Hoe")
         {
             currentTool = Tools.hoe;
-            foreach (GameObject obj in hoeObjects)
-            {
-                obj.SetActive(true);
-            }
-            foreach (GameObject obj in seedObjects)
-            {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in waterObjects)
-            {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in shovelObjects)
-            {
-                obj.SetActive(false);
-            }
+            ToolSwitching(hoeObjects, true);
+            ToolSwitching(seedObjects, false);
+            ToolSwitching(waterObjects, false);
+            ToolSwitching(shovelObjects, false);
         }
         if (tool == "Seed")
         {
             currentTool = Tools.seed;
-            foreach (GameObject obj in hoeObjects)
-            {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in seedObjects)
-            {
-                obj.SetActive(true);
-            }
-            foreach (GameObject obj in waterObjects)
-            {
-                obj.SetActive(false);
-            }
+            ToolSwitching(hoeObjects, false);
+            ToolSwitching(seedObjects, true);
+            ToolSwitching(waterObjects, false);
+            ToolSwitching(shovelObjects, false);
         }
         if (tool == "Water")
         {
             currentTool = Tools.water;
-            foreach (GameObject obj in hoeObjects)
-            {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in seedObjects)
-            {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in waterObjects)
-            {
-                obj.SetActive(true);
-            }
-            foreach (GameObject obj in shovelObjects)
-            {
-                obj.SetActive(false);
-            }
+            ToolSwitching(hoeObjects, false);
+            ToolSwitching(seedObjects, false);
+            ToolSwitching(waterObjects, true);
+            ToolSwitching(shovelObjects, false);
         }
         if (tool == "Shovel")
         {
             currentTool = Tools.shovel;
-            foreach (GameObject obj in hoeObjects)
+            ToolSwitching(hoeObjects, false);
+            ToolSwitching(seedObjects, false);
+            ToolSwitching(waterObjects, false);
+            ToolSwitching(shovelObjects, true);
+        }
+    }
+
+    public void ToolSwitching(List<GameObject> list, bool t)
+    {
+        foreach (GameObject obj in list)
+        {
+            if (obj.GetComponent<ParticleSystem>())
             {
-                obj.SetActive(false);
+                if (t)
+                {
+                    obj.GetComponent<ParticleSystem>().Play();
+                }
+                else
+                {
+                    obj.GetComponent<ParticleSystem>().Stop();
+                }
             }
-            foreach (GameObject obj in seedObjects)
+            else
             {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in waterObjects)
-            {
-                obj.SetActive(false);
-            }
-            foreach (GameObject obj in shovelObjects)
-            {
-                obj.SetActive(true);
+                obj.SetActive(t);
             }
         }
     }

@@ -11,8 +11,11 @@ public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public Animator seedPickerAnim;
 
+    public ToolCircleActivator activator;
+
     void Start()
     {
+        activator = transform.parent.GetComponent<ToolCircleActivator>();
         tool = GameObject.Find("Glove").GetComponent<ToolIcon>();
         tool.isSelected = true;
         FindObjectOfType<SwapTools>().SwitchTool(tool.name);
@@ -23,13 +26,14 @@ public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (tool != null)
-        {
-            seedPickerAnim.SetBool("IsActive", false);
-            tool.GetComponent<Collider2D>().enabled = true;
-            tool.isSelected = false;
-            tool = null;
-        }
+        activator.ActivateMe();
+        //if (tool != null)
+        //{
+        //    seedPickerAnim.SetBool("IsActive", false);
+        //    tool.GetComponent<Collider2D>().enabled = true;
+        //    tool.isSelected = false;
+        //    tool = null;
+        //}
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -38,6 +42,7 @@ public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        activator.DeactivateMe();
         tool = FindObjectOfType<DetectTool>().detectedTool;
         tool.isSelected = true;
         FindObjectOfType<SwapTools>().SwitchTool(tool.name);

@@ -21,7 +21,15 @@ public class DetectTool : MonoBehaviour
     {
         if (collision.CompareTag("ToolPlaces"))
         {
+            if(detectedTool != null && detectedTool != collision)
+            {
+                detectedTool.isSelected = false;
+                detectedTool.GetComponent<Collider2D>().enabled = true;
+                detectedTool = null;
+            }
             detectedTool = collision.GetComponent<ToolIcon>();
+            detectedTool.isSelected = true;
+            detectedTool.GetComponent<Collider2D>().enabled = false;
         }
     }
 }

@@ -23,10 +23,7 @@ public class CameraPanning : MonoBehaviour
         mousePos.z = 10;
         newMousePos = Camera.main.ScreenToWorldPoint(mousePos);
         newMousePos.y = 0;
-    }
 
-    private void LateUpdate()
-    {
         if (Input.GetMouseButton(0) && !panning)
         {
             clickedPos = newMousePos;
@@ -41,5 +38,10 @@ public class CameraPanning : MonoBehaviour
         {
             panning = false;
         }
+    }
+
+    private void LateUpdate()
+    {
+        
     }
 }

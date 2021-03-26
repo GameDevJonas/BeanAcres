@@ -22,12 +22,16 @@ public class SoilBehaviour : MonoBehaviour
     public Sprite wateredSprite, drySprite;
     public SpriteRenderer mySprite;
 
+    public AudioSource myAudioSource;
+    public AudioClip gloveHarvest, shovelDestroy;
+
     public List<GameObject> carrotSprites = new List<GameObject>();
     public List<GameObject> strawberrySprites = new List<GameObject>();
     public List<GameObject> aubergineSprites = new List<GameObject>();
 
     void Start()
     {
+        tools = FindObjectOfType<SwapTools>();
         myStage = SoilStage.empty;
         isDry = true;
         dryTimer = dryTimerSet;
@@ -56,14 +60,14 @@ public class SoilBehaviour : MonoBehaviour
                         carrotSprites[2].SetActive(false);
                         break;
                     case SwapTools.Plants.strawberry:
-                        carrotSprites[0].SetActive(true);
-                        carrotSprites[1].SetActive(false);
-                        carrotSprites[2].SetActive(false);
+                        strawberrySprites[0].SetActive(true);
+                        strawberrySprites[1].SetActive(false);
+                        strawberrySprites[2].SetActive(false);
                         break;
                     case SwapTools.Plants.aubergine:
-                        carrotSprites[0].SetActive(true);
-                        carrotSprites[1].SetActive(false);
-                        carrotSprites[2].SetActive(false);
+                        aubergineSprites[0].SetActive(true);
+                        aubergineSprites[1].SetActive(false);
+                        aubergineSprites[2].SetActive(false);
                         break;
                 }
                 break;
@@ -77,14 +81,14 @@ public class SoilBehaviour : MonoBehaviour
                         carrotSprites[2].SetActive(false);
                         break;
                     case SwapTools.Plants.strawberry:
-                        carrotSprites[0].SetActive(false);
-                        carrotSprites[1].SetActive(true);
-                        carrotSprites[2].SetActive(false);
+                        strawberrySprites[0].SetActive(false);
+                        strawberrySprites[1].SetActive(true);
+                        strawberrySprites[2].SetActive(false);
                         break;
                     case SwapTools.Plants.aubergine:
-                        carrotSprites[0].SetActive(false);
-                        carrotSprites[1].SetActive(true);
-                        carrotSprites[2].SetActive(false);
+                        aubergineSprites[0].SetActive(false);
+                        aubergineSprites[1].SetActive(true);
+                        aubergineSprites[2].SetActive(false);
                         break;
                 }
                 break;
@@ -98,14 +102,14 @@ public class SoilBehaviour : MonoBehaviour
                         carrotSprites[2].SetActive(true);
                         break;
                     case SwapTools.Plants.strawberry:
-                        carrotSprites[0].SetActive(false);
-                        carrotSprites[1].SetActive(false);
-                        carrotSprites[2].SetActive(true);
+                        strawberrySprites[0].SetActive(false);
+                        strawberrySprites[1].SetActive(false);
+                        strawberrySprites[2].SetActive(true);
                         break;
                     case SwapTools.Plants.aubergine:
-                        carrotSprites[0].SetActive(false);
-                        carrotSprites[1].SetActive(false);
-                        carrotSprites[2].SetActive(true);
+                        aubergineSprites[0].SetActive(false);
+                        aubergineSprites[1].SetActive(false);
+                        aubergineSprites[2].SetActive(true);
                         break;
                 }
                 break;
@@ -146,12 +150,6 @@ public class SoilBehaviour : MonoBehaviour
         isDry = false;
     }
 
-    public void PickUpPlant()
-    {
-        //Add plant score
-        tools.alphaScore += 10;
-        Destroy(this.gameObject);
-    }
 
     void PlantedState()
     {
@@ -170,15 +168,23 @@ public class SoilBehaviour : MonoBehaviour
     {
         if (isDone && FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.glove)
         {
-            //Add score and other effects later!
-            Destroy(this.gameObject);
+            tools.alphaScore += 10;
+            PickUpPlant(gloveHarvest);
         }
-        if(FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.shovel)
+        if (FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.shovel)
         {
-            //Minus points?
             GameObject.Find("ShovelHand").GetComponent<Animator>().Play("HoeAnim");
-            Destroy(this.gameObject);
+            PickUpPlant(shovelDestroy);
         }
+    }
+    public void PickUpPlant(AudioClip clip)
+    {
+        myAudioSource.pitch = Random.Range(0.8f, 1.3f);
+        myAudioSource.clip = clip;
+        myAudioSource.transform.parent = null;
+        myAudioSource.Play();
+        Destroy(myAudioSource.gameObject, 2f);
+        Destroy(this.gameObject);
     }
 
     void GrowingState()

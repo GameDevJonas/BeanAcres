@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913e25a646005554db59a2674a42cbe8, type: 3}
+  m_Name: Kimney
+  m_EditorClassIdentifier: 
+  name: Kimney
+  portraitPrefab: {fileID: 1802276994731873805, guid: add7e19368b1bfe47920e551973acc65,
+    type: 3}
+  normalVoice:
+  - {fileID: 8300000, guid: c50784c7ba29ac9429d21dd390c71344, type: 3}
+  happyVoice:
+  - {fileID: 8300000, guid: c50784c7ba29ac9429d21dd390c71344, type: 3}
+  sadVoice:
+  - {fileID: 8300000, guid: c50784c7ba29ac9429d21dd390c71344, type: 3}
