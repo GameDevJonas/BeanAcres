@@ -729,7 +729,7 @@ AudioSource:
   m_GameObject: {fileID: 7709603049462163927}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5313475776729275418, guid: 8d2688afca669294989ab60c456ef5fc, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -888,6 +888,7 @@ MonoBehaviour:
   wateredSprite: {fileID: 21300000, guid: c990b48005bd28949a21b9ff0895c606, type: 3}
   drySprite: {fileID: 21300000, guid: fc803a99c717048478890903ffa0db60, type: 3}
   mySprite: {fileID: 1064377988518786360}
+  dirtParticlePrefab: {fileID: 8802572529836920209, guid: 2d79e42a69428af4d8fac0c8b11ad58b, type: 3}
   myAudioSource: {fileID: 7817054557367547581}
   gloveHarvest: {fileID: 8300000, guid: cda6c72a5942bca4181df627f66c7d7a, type: 3}
   shovelDestroy: {fileID: 8300000, guid: 874f7df277639304a9dac3a45c115056, type: 3}

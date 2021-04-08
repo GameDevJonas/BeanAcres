@@ -18,7 +18,7 @@ public class WaterBehaviour : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log("Hit");
+        //Debug.Log("Hit");
         if (other.GetComponent<SoilBehaviour>() && other.GetComponent<SoilBehaviour>().isDry)
         {
             other.GetComponent<SoilBehaviour>().WaterMe();

@@ -21,6 +21,7 @@ public class SoilBehaviour : MonoBehaviour
 
     public Sprite wateredSprite, drySprite;
     public SpriteRenderer mySprite;
+    public GameObject dirtParticlePrefab;
 
     public AudioSource myAudioSource;
     public AudioClip gloveHarvest, shovelDestroy;
@@ -174,6 +175,8 @@ public class SoilBehaviour : MonoBehaviour
         if (FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.shovel)
         {
             GameObject.Find("ShovelHand").GetComponent<Animator>().Play("HoeAnim");
+            GameObject soilParticles = Instantiate(dirtParticlePrefab, transform.position, Quaternion.identity);
+            Destroy(soilParticles, 1f);
             PickUpPlant(shovelDestroy);
         }
     }

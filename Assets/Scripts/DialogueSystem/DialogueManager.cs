@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static bool inDialogue;
+
     private float textSpeed;
     public float slowSpeed;
     public float normalSpeed;
@@ -30,6 +32,8 @@ public class DialogueManager : MonoBehaviour
     public bool finishedSentence = false;
     private string currentSentence;
     private int index;
+
+    public AudioSource popupSource, continueSource, endSource;
 
     void Start()
     {
@@ -70,6 +74,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        inDialogue = true;
         anim.SetTrigger("In");
         if (portraitClone != null)
         {
@@ -113,6 +118,10 @@ public class DialogueManager : MonoBehaviour
         {
             continueButtonText.text = "End";
         } //If last sentence is next, change continue to end
+        if (fromButton && sentences.Count > 0)
+        {
+            continueSource.Play();
+        }
 
         if (sentences.Count == 0)
         {
@@ -165,10 +174,10 @@ public class DialogueManager : MonoBehaviour
             CheckForTags(sentence, letter, index);
             animatorText.text += letter;
             animatorText.UpdateText();
-                voiceSource.clip = activeVoicePool[Random.Range(0, activeVoicePool.Count)];
-                voiceSource.pitch = Random.Range(.8f, 1.2f);
-                voiceSource.Play();
-            
+            voiceSource.clip = activeVoicePool[Random.Range(0, activeVoicePool.Count)];
+            voiceSource.pitch = Random.Range(.8f, 1.2f);
+            voiceSource.Play();
+
             if (inTag)
             {
                 yield return new WaitForSeconds(.0001f);
@@ -192,5 +201,6 @@ public class DialogueManager : MonoBehaviour
         animatorText.text = " ";
         portraitAnimator.SetTrigger("Out");
         Destroy(portraitClone, 2f);
+        inDialogue = false;
     }
 }

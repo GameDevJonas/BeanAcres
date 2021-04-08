@@ -38,6 +38,10 @@ public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         transform.Rotate(new Vector3(0, 0, -eventData.delta.x) * speed * Time.deltaTime);
+        if (tool.name == "Seed")
+        {
+            seedPickerAnim.SetBool("IsActive", false);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
