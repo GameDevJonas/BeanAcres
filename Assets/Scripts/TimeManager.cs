@@ -66,7 +66,7 @@ public class TimeManager : MonoBehaviour
 
     public void StartUpMusixAMBX()
     {
-        if (!isDay)
+        if (isDay)
         {
             audios.dayAMBX.volume = 1;
             audios.dayMusic.volume = 1;
