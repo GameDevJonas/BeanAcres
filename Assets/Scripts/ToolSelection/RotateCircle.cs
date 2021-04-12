@@ -20,7 +20,7 @@ public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         tool.isSelected = true;
         FindObjectOfType<SwapTools>().SwitchTool(tool.name);
 #if UNITY_ANDROID
-        speed /= 2;
+        speed /= 3;
 #endif
     }
 
