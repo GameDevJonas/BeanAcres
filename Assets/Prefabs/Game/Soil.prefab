@@ -399,7 +399,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fc803a99c717048478890903ffa0db60, type: 3}
+  m_Sprite: {fileID: 1851866507637821998, guid: 377d1830f70a3e74083c864364661e8a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -885,8 +885,8 @@ MonoBehaviour:
   isDone: 0
   dryTimerSet: 5
   GrowTimerSet: 6
-  wateredSprite: {fileID: 21300000, guid: c990b48005bd28949a21b9ff0895c606, type: 3}
-  drySprite: {fileID: 21300000, guid: fc803a99c717048478890903ffa0db60, type: 3}
+  wateredSprite: {fileID: -1855939418529493964, guid: 934e8eefdec27894e9940d9e2271da48, type: 3}
+  drySprite: {fileID: 1851866507637821998, guid: 377d1830f70a3e74083c864364661e8a, type: 3}
   mySprite: {fileID: 1064377988518786360}
   dirtParticlePrefab: {fileID: 8802572529836920209, guid: 2d79e42a69428af4d8fac0c8b11ad58b, type: 3}
   myAudioSource: {fileID: 7817054557367547581}

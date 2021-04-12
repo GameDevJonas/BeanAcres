@@ -84,7 +84,8 @@ public class DialogueManager : MonoBehaviour
         //DialogueUI in
         animatorText.BeginAnimation();
         nameText.text = dialogue.character.name;
-        portraitClone = Instantiate(dialogue.character.portraitPrefab, portraitPosition.parent);
+        portraitClone = Instantiate(dialogue.character.portraitPrefab, portraitPosition.transform);
+        //portraitClone.transform.parent = portraitClone.transform;
         portraitAnimator = portraitClone.GetComponent<Animator>();
         //ChangeMood(dialogue.startingMood);
         continueButtonText.text = "Continue";

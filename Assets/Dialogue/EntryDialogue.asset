@@ -14,11 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: 8d33ef01e5320a2448561d1f4f5c9c21, type: 2}
   dialogue:
-  - sentence: <wiggle>Hello!
+  - sentence: Hello, welcome to <color=#E2BA64>Bean Acres</color>!
     mood: 1
-  - sentence: My name is <wave>Kimney!
+  - sentence: My name is <color=#BD5C79>Kimney</color> and I am the owner of this
+      farm.
     mood: 0
-  - sentence: What is your name?
+  - sentence: I will help to guide you through your journey here at <color=#E2BA64>Bean
+      Acres</color>.
     mood: 1
-  - sentence: <shake |>Hello?...
+  - sentence: Your work here will mostly consist of <color=#7DE264>plowing</color>,
+      <color=#7DE264>sowing</color>, <color=#7DE264>watering</color> and <color=#7DE264>harvesting</color>.
+    mood: 0
+  - sentence: I will show you how things work around here, so follow me!
     mood: 2
