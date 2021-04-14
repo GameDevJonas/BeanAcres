@@ -92,7 +92,7 @@ public class DialogueManager : MonoBehaviour
         //portraitClone.transform.parent = portraitClone.transform;
         portraitAnimator = portraitClone.GetComponent<Animator>();
         //ChangeMood(dialogue.startingMood);
-        continueButtonText.text = "Continue";
+        continueButtonText.text = "Tap to continue";
         animatorText.text = "";
         sentences.Clear();
         moods.Clear();
@@ -108,6 +108,7 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence(bool fromButton)
     {
+        if (fromButton) continueButtonText.GetComponent<Animator>().Play("Text_Out");
         if (fastForwarded)
         {
             return;
@@ -124,10 +125,6 @@ public class DialogueManager : MonoBehaviour
         finishedSentence = false;
         textSpeed = normalSpeed;
 
-        if (sentences.Count == 1)
-        {
-            continueButtonText.text = "End";
-        } //If last sentence is next, change continue to end
         if (fromButton && sentences.Count > 0)
         {
             continueSource.Play();
@@ -199,6 +196,11 @@ public class DialogueManager : MonoBehaviour
 
             index++;
         }
+        if (sentences.Count == 0)
+        {
+            continueButtonText.text = "Tap to end";
+        } //If last sentence is next, change continue to end
+        continueButtonText.GetComponent<Animator>().Play("Text_In");
         //voiceSource.Stop();
         finishedSentence = true;
         fastForwarded = false;
