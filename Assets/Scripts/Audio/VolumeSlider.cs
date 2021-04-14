@@ -11,7 +11,12 @@ public class VolumeSlider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        float value;
+        mixer.GetFloat("MusicVolume", out value);
+        //Debug.Log(value + ", " + Mathf.Pow(10, (value / 20f)));
+        musicSlider.value = Mathf.Pow(10, (value / 20f));
+        mixer.GetFloat("SFXVolume", out value);
+        sFXSlider.value = Mathf.Pow(10, (value / 20f));
     }
 
     // Update is called once per frame
