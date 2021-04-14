@@ -30,10 +30,13 @@ public class DialogueManager : MonoBehaviour
 
     public bool inTag = false;
     public bool finishedSentence = false;
+    public bool fastForwarded = false;
     private string currentSentence;
     private int index;
 
     public AudioSource popupSource, continueSource, endSource;
+
+    private DialogueTrigger trigger;
 
     void Start()
     {
@@ -72,9 +75,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, DialogueTrigger dTrigger)
     {
         inDialogue = true;
+        trigger = dTrigger;
         anim.SetTrigger("In");
         if (portraitClone != null)
         {
@@ -104,12 +108,17 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence(bool fromButton)
     {
-        if (!finishedSentence && fromButton)
+        if (fastForwarded)
+        {
+            return;
+        }
+        if (!finishedSentence && fromButton && !fastForwarded)
         {
             StopAllCoroutines();
             StartCoroutine(TypeSentence(currentSentence));
-            textSpeed = .0001f;
-            finishedSentence = true;
+            textSpeed = .00000000000001f;
+            fastForwarded = true;
+            //finishedSentence = true;
             return;
         }
         finishedSentence = false;
@@ -177,14 +186,14 @@ public class DialogueManager : MonoBehaviour
             animatorText.UpdateText();
             voiceSource.clip = activeVoicePool[Random.Range(0, activeVoicePool.Count)];
             voiceSource.pitch = Random.Range(.8f, 1.2f);
-            voiceSource.Play();
 
             if (inTag)
             {
-                yield return new WaitForSeconds(.0001f);
+                yield return new WaitForSeconds(.00000001f);
             }
             else
             {
+                voiceSource.Play();
                 yield return new WaitForSeconds(textSpeed);
             }
 
@@ -192,16 +201,19 @@ public class DialogueManager : MonoBehaviour
         }
         //voiceSource.Stop();
         finishedSentence = true;
+        fastForwarded = false;
     }
 
     void EndDialogue()
     {
         //DialogueUI out
+        StopAllCoroutines();
         anim.SetTrigger("Out");
         currentDialogue = null;
         animatorText.text = " ";
         portraitAnimator.SetTrigger("Out");
         Destroy(portraitClone, 2f);
         inDialogue = false;
+        trigger.finishedDialogueEvents.Invoke();
     }
 }

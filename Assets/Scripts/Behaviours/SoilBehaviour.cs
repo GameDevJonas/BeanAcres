@@ -12,6 +12,8 @@ public class SoilBehaviour : MonoBehaviour
 
     public SwapTools.Plants myPlant;
 
+    public ParticleSystem growthParticles;
+
     public bool isDry, isDone;
     public float dryTimerSet;
     float dryTimer;
@@ -144,6 +146,7 @@ public class SoilBehaviour : MonoBehaviour
         myPlant = plant;
         growTimer = GrowTimerSet;
         myStage = SoilStage.planted;
+        growthParticles.Play();
     }
 
     public void WaterMe()
@@ -158,6 +161,7 @@ public class SoilBehaviour : MonoBehaviour
         {
             growTimer = GrowTimerSet;
             myStage = SoilStage.growing;
+            growthParticles.Play();
         }
         else if (!isDry)
         {
@@ -196,6 +200,7 @@ public class SoilBehaviour : MonoBehaviour
         {
             growTimer = GrowTimerSet;
             myStage = SoilStage.done;
+            growthParticles.Play();
         }
         else if (!isDry)
         {

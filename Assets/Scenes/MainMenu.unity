@@ -1584,7 +1584,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 7bf904207de458744afd000e96077989, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3286,6 +3286,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1794971654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1794971656}
+  - component: {fileID: 1794971655}
+  m_Layer: 0
+  m_Name: DialogueTriggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1794971655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794971654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c77931d51b139d44882e54657abbdf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1794971656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794971654}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.089867465, y: 0.36649203, z: 0.07319188}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839113487
 GameObject:
   m_ObjectHideFlags: 0
@@ -3440,7 +3483,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 7bf904207de458744afd000e96077989, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4275,6 +4318,14 @@ MonoBehaviour:
     nightMusic: {fileID: 2131142178}
     dayAMBX: {fileID: 612402282}
     nightAMBX: {fileID: 1214701613}
+    fDayAMBX: {fileID: 8300000, guid: 7f9853eefcd452c46b88dbf9fa1803f4, type: 3}
+    fNightAMBX: {fileID: 8300000, guid: e20982673b8a8164b9acc7cbfc7ab1a3, type: 3}
+    mDayAMBX: {fileID: 8300000, guid: dfe13366e0be28344a1ea4e491a9fc60, type: 3}
+    mNightAMBX: {fileID: 8300000, guid: 9e6770fc60fe9224cb851ae30c164033, type: 3}
+    fDayMusic: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
+    fNightMusic: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
+    mDayMusic: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
+    mNightMusic: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
 --- !u!4 &2137939953
 Transform:
   m_ObjectHideFlags: 0

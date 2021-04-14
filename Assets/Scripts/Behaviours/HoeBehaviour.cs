@@ -11,7 +11,7 @@ public class HoeBehaviour : MonoBehaviour
     public GameObject objToPlace;
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
-    private bool placementPoseIsValid = false;
+    public bool placementPoseIsValid = false;
     public Animator anim;
 
     void Start()
@@ -21,6 +21,9 @@ public class HoeBehaviour : MonoBehaviour
 
     void Update()
     {
+#if UNITY_EDITOR
+        return;
+#endif
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
@@ -32,9 +35,9 @@ public class HoeBehaviour : MonoBehaviour
 
     public void PlaceObject()
     {
-        anim.Play("HoeAnim");
         if (placementPoseIsValid)
         {
+            anim.Play("HoeAnim");
             Instantiate(objToPlace, PlacementPose.position, PlacementPose.rotation);
         }
     }
@@ -65,7 +68,7 @@ public class HoeBehaviour : MonoBehaviour
 
             var cameraForward = Camera.current.transform.forward;
             var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
-            PlacementPose.rotation = Quaternion.LookRotation(cameraBearing);
+            //PlacementPose.rotation = Quaternion.LookRotation(cameraBearing);
         }
     }
 }

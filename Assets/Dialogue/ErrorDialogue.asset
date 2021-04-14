@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 11400000, guid: 8d33ef01e5320a2448561d1f4f5c9c21, type: 2}
   dialogue:
-  - sentence: <shake |> What are you <color=#FFFF00>doing?
-    mood: 2
-  - sentence: <shake |> You good?
-    mood: 2
+  - sentence: Are you having some trouble there partner?
+    mood: 0
+  - sentence: "\rMake sure the room is <color=#7DE264>well lit</color> and you that
+      you are pointing at a <color=#7DE264>flat surface</color>.\r\n"
+    mood: 0

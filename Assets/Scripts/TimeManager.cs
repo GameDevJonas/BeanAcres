@@ -111,6 +111,37 @@ public class TimeManager : MonoBehaviour
             imageToUpdate.alpha = Mathf.Lerp(1, 0, (currentTime - 12) * incrementValue);
         }
     }
+
+    public void SwitchScene(string scene)
+    {
+
+        if (isDay)
+        {
+            if (scene == "Menu")
+            {
+                audios.audioFader.SwitchClip(audios.dayAMBX, audios.nightAMBX, audios.mDayAMBX, audios.mNightAMBX);
+                //audios.audioFader.SwitchClip(audios.dayMusic, audios.nightMusic, audios.mDayMusic, audios.mNightMusic);
+            }
+            else if (scene == "LevelSelect")
+            {
+                audios.audioFader.SwitchClip(audios.dayMusic, audios.nightMusic, audios.fDayMusic, audios.fNightMusic);
+                //audios.audioFader.SwitchClip(audios.dayMusic, audios.nightMusic, audios.fDayMusic, audios.fNightMusic);
+            }
+        }
+        else
+        {
+            if (scene == "Menu")
+            {
+                audios.audioFader.SwitchClip(audios.nightAMBX, audios.dayAMBX, audios.mNightAMBX, audios.mDayAMBX);
+                //audios.audioFader.SwitchClip(audios.nightMusic, audios.dayMusic, audios.mNightMusic, audios.mDayMusic);
+            }
+            else if (scene == "LevelSelect")
+            {
+                audios.audioFader.SwitchClip(audios.nightAMBX, audios.dayAMBX, audios.fNightAMBX, audios.fDayAMBX);
+                //audios.audioFader.SwitchClip(audios.nightMusic, audios.dayMusic, audios.fNightMusic, audios.fDayMusic);
+            }
+        }
+    }
 }
 
 [System.Serializable]
@@ -118,9 +149,20 @@ public class MainMenuAudios
 {
     public AudioFadeInOut audioFader;
     [Space(10)]
+    [Header("Audio sources")]
     public AudioSource dayMusic;
     public AudioSource nightMusic;
     [Space(10)]
     public AudioSource dayAMBX;
     public AudioSource nightAMBX;
+    [Space(10)]
+    [Header("AMBX Clips")]
+    public AudioClip fDayAMBX;
+    public AudioClip fNightAMBX;
+    public AudioClip mDayAMBX, mNightAMBX;
+    [Space(10)]
+    [Header("Music Clips")]
+    public AudioClip fDayMusic;
+    public AudioClip fNightMusic;
+    public AudioClip mDayMusic, mNightMusic;
 }

@@ -130,10 +130,12 @@ public class SwapTools : MonoBehaviour
                 if (t)
                 {
                     obj.GetComponent<ParticleSystem>().Play();
+                    obj.GetComponent<WaterBehaviour>().FadeInOut(t);
                 }
                 else
                 {
                     obj.GetComponent<ParticleSystem>().Stop();
+                    obj.GetComponent<WaterBehaviour>().FadeInOut(t);
                 }
             }
             else

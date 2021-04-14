@@ -7,7 +7,11 @@ public class FirstTrigger : DialogueTrigger
     // Start is called before the first frame update
     void Start()
     {
-        DialogueManager.inDialogue = true;
-        Invoke("TriggerDialogue", 1f);
+        if (!DialogueTriggers.firstDialogue)
+        {
+            DialogueManager.inDialogue = true;
+            Invoke("TriggerDialogue", 1f);
+            DialogueTriggers.firstDialogue = true;
+        }
     }
 }

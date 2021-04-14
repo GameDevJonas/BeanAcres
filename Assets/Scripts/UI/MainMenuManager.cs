@@ -14,14 +14,14 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         inSettings = false;
-        if(settingsMenu != null)
-        settingsMenu.SetBool("Active", inSettings);
+        if (settingsMenu != null)
+            settingsMenu.SetBool("Active", inSettings);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void PlayGame()
@@ -31,6 +31,9 @@ public class MainMenuManager : MonoBehaviour
 
     public IEnumerator LoadScene(int scene, float waitTime)
     {
+        if (scene == 0) FindObjectOfType<TimeManager>().SwitchScene("Menu");
+        if (scene == 1) FindObjectOfType<TimeManager>().SwitchScene("LevelSelect");
+        if (scene == 2) FindObjectOfType<TimeManager>().SwitchScene("LevelSelect");
         fader.SetBool("DoFade", true);
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(scene);

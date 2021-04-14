@@ -18,7 +18,7 @@ public class SoilSeedChecker : MonoBehaviour
     public GameObject placementIndicator;
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
-    private bool placementPoseIsValid = false;
+    public bool placementPoseIsValid = false;
 
     public SwapTools tools;
 
@@ -110,7 +110,7 @@ public class SoilSeedChecker : MonoBehaviour
 
             var cameraForward = Camera.current.transform.forward;
             var cameraBearing = new Vector3(cameraForward.x, 0, cameraForward.z).normalized;
-            PlacementPose.rotation = Quaternion.LookRotation(cameraBearing);
+            //PlacementPose.rotation = Quaternion.LookRotation(cameraBearing);
         }
     }
 
