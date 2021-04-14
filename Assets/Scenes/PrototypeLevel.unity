@@ -337,6 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layoutTransform: {fileID: 1802000652}
   selectTransform: {fileID: 1799146157}
+  myRotationPicker: {fileID: 1802000652}
   isSelected: 0
 --- !u!58 &66758995
 CircleCollider2D:
@@ -1309,6 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layoutTransform: {fileID: 2098146519}
   selectTransform: {fileID: 1799146157}
+  myRotationPicker: {fileID: 2098146519}
   isSelected: 0
 --- !u!58 &357552627
 CircleCollider2D:
@@ -1417,6 +1419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layoutTransform: {fileID: 725238943}
   selectTransform: {fileID: 1799146157}
+  myRotationPicker: {fileID: 725238943}
   isSelected: 0
 --- !u!58 &359773443
 CircleCollider2D:
@@ -2627,6 +2630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layoutTransform: {fileID: 12255239}
   selectTransform: {fileID: 1799146157}
+  myRotationPicker: {fileID: 12255239}
   isSelected: 0
 --- !u!58 &861327169
 CircleCollider2D:
@@ -4034,6 +4038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layoutTransform: {fileID: 2065816645}
   selectTransform: {fileID: 1799146157}
+  myRotationPicker: {fileID: 2065816645}
   isSelected: 0
 --- !u!58 &1447043543
 CircleCollider2D:

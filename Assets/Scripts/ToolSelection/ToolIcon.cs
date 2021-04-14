@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ToolIcon : MonoBehaviour
 {
-    public Transform layoutTransform, selectTransform;
+    public Transform layoutTransform, selectTransform, myRotationPicker;
     Vector3 normalScale;
 
     public bool isSelected;

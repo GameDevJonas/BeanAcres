@@ -65,5 +65,9 @@ public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             seedPickerAnim.SetBool("IsActive", false);
         }
+        //Debug.Log(transform.localEulerAngles + new Vector3(0f, 0f, Vector3.SignedAngle(tool.transform.position - transform.position, Vector3.up, Vector3.forward)));
+        transform.localRotation = Quaternion.Euler(transform.localEulerAngles + new Vector3(0f, 0f, Vector3.SignedAngle(tool.myRotationPicker.position - transform.position, Vector3.up, Vector3.forward)));
+        //transform.Rotate(transform.localEulerAngles + new Vector3(0f, 0f, Vector3.SignedAngle(tool.transform.position - transform.position, Vector3.up, Vector3.forward)));
+        //transform.DOLocalRotate(transform.localEulerAngles + new Vector3(0f, 0f, Vector3.SignedAngle(detector.lastFocused.position - transform.position, Vector3.up, Vector3.forward)), 0.2f);
     }
 }
