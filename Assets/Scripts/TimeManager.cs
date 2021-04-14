@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TimeManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class TimeManager : MonoBehaviour
     public CanvasGroup imageToUpdate;
     public bool isDay;
     private bool initialStartUp;
+    public TextMeshProUGUI clock;
 
     public MainMenuAudios audios;
 
@@ -31,6 +33,21 @@ public class TimeManager : MonoBehaviour
         if (!debug) GetTime();
         UpdateImage();
         CheckForDayNight();
+        UpdateGameClock();
+    }
+
+    void UpdateGameClock()
+    {
+        int hours = System.DateTime.Now.Hour;
+        int minutes = System.DateTime.Now.Minute;
+        if (minutes < 10)
+        {
+            clock.text = hours + ":" + "0" + minutes;
+        }
+        else
+        {
+            clock.text = hours + ":" + minutes;
+        }
     }
 
     private void GetTime()

@@ -16,7 +16,7 @@ MonoBehaviour:
   dialogue:
   - sentence: Hello, welcome to <color=#E2BA64>Bean Acres</color>!
     mood: 1
-  - sentence: My name is <color=#BD5C79>Kimney</color> and I am the owner of this
+  - sentence: My name is <color=#D638B0>Kimney</color> and I am the owner of this
       farm.
     mood: 0
   - sentence: I will help to guide you through your journey here at <color=#E2BA64>Bean

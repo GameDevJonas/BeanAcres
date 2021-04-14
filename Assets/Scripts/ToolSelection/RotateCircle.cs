@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
 {
     public float speed;
 
@@ -24,9 +24,15 @@ public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 #endif
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         activator.ActivateMe();
+
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        //activator.ActivateMe();
         //if (tool != null)
         //{
         //    seedPickerAnim.SetBool("IsActive", false);
