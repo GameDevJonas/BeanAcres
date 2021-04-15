@@ -177,7 +177,7 @@ public class TextMeshAnimator : MonoBehaviour {
 						string tag = inputText.Substring (startTagIndex, index - startTagIndex);
 						//Debug.Log("TAG FOUND: " + tag);
 						if (tag.ToUpper().Contains("COLOR") || tag.ToUpper().Contains("SIZE") || tag.ToUpper() == openingChar + "B" + closingChar || tag.ToUpper() == openingChar + "/B" + closingChar || tag.ToUpper() == openingChar + "I" + closingChar || tag.ToUpper() == openingChar + "/I" + closingChar) {
-							Debug.Log("This is a rich-text tag, don't worry about it");
+							//Debug.Log("This is a rich-text tag, don't worry about it");
 							if (openingChar != '<' || closingChar != '>') {
 								Debug.LogWarning("These are not normal TextMeshPro tags, so they'll likely show up in the box.");
 							}

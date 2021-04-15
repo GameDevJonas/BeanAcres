@@ -31,9 +31,12 @@ public class TimeManager : MonoBehaviour
     void Update()
     {
         if (!debug) GetTime();
-        UpdateImage();
-        CheckForDayNight();
-        UpdateGameClock();
+        if (imageToUpdate)
+        {
+            UpdateImage();
+            CheckForDayNight();
+            if (clock) UpdateGameClock();
+        }
     }
 
     void UpdateGameClock()

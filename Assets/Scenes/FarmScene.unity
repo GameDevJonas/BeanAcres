@@ -5705,14 +5705,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c8e6f78ec061bb4a97fb3a87eafd15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0}
-  endPos: {x: 0, y: 0}
-  mousePos: {x: 0, y: 0, z: 0}
-  startTime: 0
-  diffTime: 0
-  distance: 0
-  speed: 0
-  followTarget: {fileID: 1485450393}
+  scrolling: {fileID: 1485450392}
+  scrollSpeed: 1.5
+  decelTime: 2
 --- !u!1 &1968639244
 GameObject:
   m_ObjectHideFlags: 0

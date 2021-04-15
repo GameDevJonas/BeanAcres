@@ -165,7 +165,7 @@ public class DialogueManager : MonoBehaviour
 
         if (characterIndex > 0 && sentence[characterIndex - 1] == '>')
         {
-            Debug.Log("Out of tag");
+            //Debug.Log("Out of tag");
             inTag = false;
         }
     }

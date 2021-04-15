@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CinemachineCamPan : MonoBehaviour
 {
-    public Vector2 startPos, endPos;
+    #region OLD
+    /*public Vector2 startPos, endPos;
     public Vector3 mousePos;
     public float startTime, diffTime, distance, speed;
     bool panning;
@@ -72,5 +73,54 @@ public class CinemachineCamPan : MonoBehaviour
                 //Debug.Log(speed);
             }
         }
+    }*/
+    #endregion
+    private Vector2 touchPos, lastPos;
+    private Vector3 scrollStart;
+    private bool panning;
+    private float vel, damping;
+    [SerializeField] private Transform scrolling;
+    [Range(1f, 100f)] [SerializeField] private float scrollSpeed;
+    [Range(1f, 10f)] [SerializeField] private float decelTime;
+
+    private void Start()
+    {
+        scrollSpeed /= 50;
+    }
+
+    void Update()
+    {
+        if (DialogueManager.inDialogue)
+        {
+            return;
+        }
+
+        if (Input.GetMouseButton(0) && !panning)
+        {
+            panning = true;
+            touchPos = Input.mousePosition;
+            scrollStart = scrolling.position;
+        }
+
+        if (panning)
+        {
+            scrolling.position = scrollStart - (Vector3)((Vector2)Input.mousePosition - touchPos) * scrollSpeed * 0.01f;
+            scrolling.position = new Vector3(scrolling.position.x, 0f, 0f);
+        }
+        else
+        {
+            scrolling.position += Vector3.left * damping * 0.01f * Time.deltaTime;
+            damping = Mathf.SmoothDamp(damping, 0f, ref vel, decelTime * 0.1f);
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            panning = false;
+            damping = ((Vector2)Input.mousePosition - lastPos).x;
+            lastPos = Vector3.zero;
+        }
+
+        lastPos = Input.mousePosition;
     }
 }
+

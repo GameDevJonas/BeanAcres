@@ -28,7 +28,7 @@ public class VolumeSlider : MonoBehaviour
     public void UpdateMuicVolume()
     {
         mixer.SetFloat("MusicVolume", Mathf.Log10(musicSlider.value) * 20);
-        Debug.Log(mixer.SetFloat("MusicVolume", Mathf.Log10(musicSlider.value) * 20));
+        //Debug.Log(mixer.SetFloat("MusicVolume", Mathf.Log10(musicSlider.value) * 20));
     }
 
     public void UpdateSFXVolume()
