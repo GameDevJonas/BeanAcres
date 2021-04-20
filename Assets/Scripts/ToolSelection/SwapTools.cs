@@ -15,7 +15,7 @@ public class SwapTools : MonoBehaviour
     //public Color selected, unselected;
 
     public int alphaScore;
-    public TextMeshProUGUI scoreText;
+    //public TextMeshProUGUI scoreText;
 
     public List<GameObject> hoeObjects = new List<GameObject>();
     public List<GameObject> seedObjects = new List<GameObject>();
@@ -35,7 +35,7 @@ public class SwapTools : MonoBehaviour
 
     void Update()
     {
-        scoreText.text = "Score: " + alphaScore;
+        //scoreText.text = "Score: " + alphaScore;
 
         switch (currentTool)
         {

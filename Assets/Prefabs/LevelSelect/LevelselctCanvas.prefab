@@ -215,7 +215,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1386137456597135130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,7 +349,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  pressTime: 0.1
+  pressTime: 0.03
   timer: 0
 --- !u!1 &5788388125820576365
 GameObject:
@@ -445,7 +445,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: LoadFarmingGame
+        m_MethodName: OpenCloseQuest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -467,7 +467,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  pressTime: 0.1
+  pressTime: 0.03
   timer: 0
 --- !u!1 &9222067637389105348
 GameObject:

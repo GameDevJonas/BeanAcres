@@ -32,9 +32,12 @@ public class SoilBehaviour : MonoBehaviour
     public List<GameObject> strawberrySprites = new List<GameObject>();
     public List<GameObject> aubergineSprites = new List<GameObject>();
 
+    private FarmingGoal quests;
+
     void Start()
     {
         tools = FindObjectOfType<SwapTools>();
+        quests = FindObjectOfType<FarmingGoal>();
         myStage = SoilStage.empty;
         isDry = true;
         dryTimer = dryTimerSet;
@@ -186,6 +189,7 @@ public class SoilBehaviour : MonoBehaviour
     }
     public void PickUpPlant(AudioClip clip)
     {
+        quests.HarvestPlant(myPlant);
         myAudioSource.pitch = Random.Range(0.8f, 1.3f);
         myAudioSource.clip = clip;
         myAudioSource.transform.parent = null;
