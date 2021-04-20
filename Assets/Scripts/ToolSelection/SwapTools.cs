@@ -24,14 +24,19 @@ public class SwapTools : MonoBehaviour
 
     void Start()
     {
-        currentTool = Tools.glove;
-        currentToolString = "Glove";
-        ToolSwitching(hoeObjects, false);
-        ToolSwitching(seedObjects, false);
-        ToolSwitching(waterObjects, false);
-        ToolSwitching(shovelObjects, false);
+        Invoke("StarterTool", .2f);
+        //currentTool = Tools.hoe;
+        //currentToolString = "Hoe";
+        //ToolSwitching(hoeObjects, true);
+        //ToolSwitching(seedObjects, false);
+        //ToolSwitching(waterObjects, false);
+        //ToolSwitching(shovelObjects, false);
     }
 
+    public void StarterTool()
+    {
+        SwitchTool("Hoe");
+    }
 
     void Update()
     {

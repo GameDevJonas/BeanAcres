@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f801988fb8ca52d4bbf0086aa0a06f9d, type: 3}
+  m_Name: 04 HarvestingAndRemoving
+  m_EditorClassIdentifier: 
+  character: {fileID: 11400000, guid: 8d33ef01e5320a2448561d1f4f5c9c21, type: 2}
+  dialogue:
+  - sentence: Those plants look very happy and hydrated, great job!
+    mood: 0
+  - sentence: Once a plant is fully grown, select the <color=#7DE264>garden glove</color>
+      from the wheel and <color=#7DE264>tap on them</color> to harvest.
+    mood: 1
+  - sentence: <color=#E2BA64>On top of your screen</color> you see the job requirement.
+      Right now you need <color=#7DE264>one of each vegetable</color> to complete
+      this task.
+    mood: 2
+  - sentence: You should already have at least one of each plant ready by now so
+      go ahead and harvest!
+    mood: 0
+  - sentence: You can also <color=#E2BA64>remove patches</color> with the <color=#7DE264>shovel</color>.
+      Select it on the tool wheel and <color=#7DE264>tap on a patch</color> to remove
+      it!
+    mood: 2
+  - sentence: I won't let you use the shovel quite yet though. Try it out later!
+    mood: 2

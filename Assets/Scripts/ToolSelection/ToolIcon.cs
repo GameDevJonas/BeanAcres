@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToolIcon : MonoBehaviour
 {
@@ -24,6 +25,14 @@ public class ToolIcon : MonoBehaviour
         else
         {
             RotationPosition();
+        }
+        if (GetComponent<CircleCollider2D>().enabled || isSelected)
+        {
+            GetComponent<Image>().color = Color.white;
+        }
+        else
+        {
+            GetComponent<Image>().color = Color.gray;
         }
     }
 

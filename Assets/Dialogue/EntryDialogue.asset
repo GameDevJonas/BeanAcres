@@ -25,7 +25,7 @@ MonoBehaviour:
   - sentence: Your work here will mostly consist of <color=#7DE264>plowing</color>,
       <color=#7DE264>sowing</color>, <color=#7DE264>watering</color> and <color=#7DE264>harvesting</color>.
     mood: 0
-  - sentence: Let's start off by harvesting a <color=#7DE264>Carrot Bean</color>.
+  - sentence: Let's start off by harvesting one of every <color=#7DE264>vegetable</color>.
       You can go to the harvesting ground by pressing the <color=#E2BA64>Field</color>.
     mood: 1
   - sentence: I will show you how things work around here, so follow me!

@@ -18,6 +18,7 @@ public class CheckForErrorInAR : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DialogueManager.inDialogue) return;
         if (!encounteredError && !inCooldown)
         {
             if (hoePlacement.isActiveAndEnabled)

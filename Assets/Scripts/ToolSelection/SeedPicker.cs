@@ -23,7 +23,7 @@ public class SeedPicker : MonoBehaviour, IPointerDownHandler
     // Update is called once per frame
     void Update()
     {
-        if(soilChecker.isActiveAndEnabled && soilChecker.tools.currentSeed == mySeed)
+        if (soilChecker.isActiveAndEnabled && soilChecker.tools.currentSeed == mySeed)
         {
             active = true;
         }
@@ -35,17 +35,22 @@ public class SeedPicker : MonoBehaviour, IPointerDownHandler
         if (active)
         {
             GetComponent<Image>().color = selected;
-            spriteTransform.localScale = transform.localScale;
+            GetComponent<AudioRandomClipPitch>().enabled = true;
+            //spriteTransform.localScale = transform.localScale;
+            
         }
         else
         {
             GetComponent<Image>().color = unselected;
-            spriteTransform.localScale = spriteFirstScale;
+            GetComponent<AudioRandomClipPitch>().enabled = false;
+            //spriteTransform.localScale = spriteFirstScale;
+            GetComponent<Animator>().Play("UnSelected");
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        GetComponent<Animator>().Play("Selected");
         soilChecker.SwitchSeed(mySeed);
     }
 }

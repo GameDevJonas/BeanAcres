@@ -6,12 +6,16 @@ using TMPro;
 public class FarmingGoal : MonoBehaviour
 {
     public List<QuestElements> questElements;
-
+    public GameObject tutorialObj;
     // Start is called before the first frame update
     void Start()
     {
         LoadInfo(FindObjectOfType<LevelQuests>().currentQuest);
         GetComponent<DialogueTrigger>().dialogue = FindObjectOfType<LevelQuests>().currentQuest.endDialogue;
+        if(FindObjectOfType<LevelQuests>().currentQuest.name == "01Tutorial")
+        {
+            tutorialObj.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -64,6 +68,7 @@ public class FarmingGoal : MonoBehaviour
         switch (plant)
         {
             case SwapTools.Plants.carrot:
+                if (!questElements[0].obj.activeInHierarchy) return;
                 var cInfo = questElements[0];
                 cInfo.quantity++;
                 cInfo.scoreText.text = cInfo.quantity + "/" + cInfo.goal;
@@ -74,6 +79,7 @@ public class FarmingGoal : MonoBehaviour
                 }
                 break;
             case SwapTools.Plants.strawberry:
+                if (!questElements[1].obj.activeInHierarchy) return;
                 var sInfo = questElements[1];
                 sInfo.quantity++;
                 sInfo.scoreText.text = sInfo.quantity + "/" + sInfo.goal;
@@ -84,6 +90,7 @@ public class FarmingGoal : MonoBehaviour
                 }
                 break;
             case SwapTools.Plants.aubergine:
+                if (!questElements[2].obj.activeInHierarchy) return;
                 var aInfo = questElements[2];
                 aInfo.quantity++;
                 aInfo.scoreText.text = aInfo.quantity + "/" + aInfo.goal;

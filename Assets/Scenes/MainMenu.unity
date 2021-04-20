@@ -334,7 +334,7 @@ RectTransform:
   m_GameObject: {fileID: 74162612}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.706749, y: 8.706749, z: 8.706749}
+  m_LocalScale: {x: 10.796369, y: 10.796369, z: 10.796369}
   m_Children:
   - {fileID: 1426053178}
   m_Father: {fileID: 1746333178}
@@ -342,7 +342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.99999, y: 139.10007}
+  m_AnchoredPosition: {x: 65, y: 139.10007}
   m_SizeDelta: {x: 31.88611, y: 16.247139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &74162614
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8636192047704745485, guid: 8f8bdb7054a9374409f563edd31c5fcc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf3a25f0d650e434d933ce322ab66ff5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3453,6 +3453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingsMenu: {fileID: 438213539}
+  questBoard: {fileID: 0}
   fader: {fileID: 317791087}
 --- !u!4 &1892920527
 Transform:

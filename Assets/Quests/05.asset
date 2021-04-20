@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a88303e9ded0f9747bd9ef9d931f1829, type: 3}
-  m_Name: 01Tutorial
+  m_Name: 05
   m_EditorClassIdentifier: 
   carrot:
     goal: 1
   strawberry:
-    goal: 1
+    goal: 6
   aubergine:
-    goal: 1
-  endDialogue: {fileID: 11400000, guid: 7f77702cb37d1db4dbc5e23d3b4127f2, type: 2}
-  reward: 50
+    goal: 2
+  endDialogue: {fileID: 11400000, guid: 8d0dfb6f0446329469edd8c6932e9575, type: 2}
+  reward: 200

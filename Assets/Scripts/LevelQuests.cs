@@ -14,7 +14,7 @@ public class LevelQuests : MonoBehaviour
 
     private void Awake()
     {
-        if(FindObjectsOfType<LevelQuests>().Length > 1)
+        if (FindObjectsOfType<LevelQuests>().Length > 1)
         {
             Destroy(this.gameObject);
         }
@@ -38,11 +38,24 @@ public class LevelQuests : MonoBehaviour
         queueVisual = quests.ToArray();
     }
 
+    public void PlayTutorial()
+    {
+        quests.Enqueue(questArray[0]);
+        currentQuest = quests.Peek();
+    }
+
     [ContextMenu("Next Quest")]
     public void NextQuest()
     {
         quests.Dequeue();
-        if(quests.Count == 0) foreach (QuestScriptable quest in questArray) quests.Enqueue(quest);
+        if (quests.Count == 0)
+        { 
+            foreach (QuestScriptable quest in questArray)
+            {
+                if (quest.name != "01Tutorial")
+                    quests.Enqueue(quest);
+            }
+        }
         currentQuest = quests.Peek();
     }
 }

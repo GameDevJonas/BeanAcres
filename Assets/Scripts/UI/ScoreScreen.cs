@@ -53,6 +53,7 @@ public class ScoreScreen : MonoBehaviour
     public IEnumerator AddReward(int scoreBefore, int reward)
     {
         int newScore = scoreBefore;
+        FindObjectOfType<LevelQuests>().beanStalks = newScore;
         int newReward = reward;
         yield return new WaitForSeconds(2f);
         while(newScore != scoreBefore + reward)
@@ -63,7 +64,6 @@ public class ScoreScreen : MonoBehaviour
             totalScoreText.text = "" + newScore;
             yield return new WaitForSeconds(.01f);
         }
-        FindObjectOfType<LevelQuests>().beanStalks = newScore;
         manager.NextQuest();
         StopAllCoroutines();
     }
