@@ -26,5 +26,5 @@ MonoBehaviour:
   - sentence: Each vegetable has <color=#7DE264>three stages</color>. Water your
       patches now, and i'm sure you'll see when the plants are fully grown!
     mood: 0
-  - sentence: (You can tell by how they <color=#E2BA64>dance</color>.
+  - sentence: (You can tell by how they <color=#E2BA64>dance</color>.)
     mood: 2
