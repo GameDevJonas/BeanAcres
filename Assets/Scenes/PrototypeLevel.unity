@@ -1275,7 +1275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &223974227
 Transform:
   m_ObjectHideFlags: 0
@@ -3270,6 +3270,7 @@ MonoBehaviour:
   spriteTransform: {fileID: 176721442}
   spriteFirstScale: {x: 0, y: 0, z: 0}
   active: 0
+  tools: {fileID: 0}
 --- !u!95 &759913663
 Animator:
   serializedVersion: 3
@@ -4781,6 +4782,7 @@ MonoBehaviour:
   spriteTransform: {fileID: 1355995003}
   spriteFirstScale: {x: 0, y: 0, z: 0}
   active: 0
+  tools: {fileID: 0}
 --- !u!95 &1099597086
 Animator:
   serializedVersion: 3
@@ -7401,6 +7403,7 @@ MonoBehaviour:
   spriteTransform: {fileID: 873993258}
   spriteFirstScale: {x: 0, y: 0, z: 0}
   active: 0
+  tools: {fileID: 0}
 --- !u!95 &1878160485
 Animator:
   serializedVersion: 3
@@ -12388,6 +12391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338b1ad6aef6dfc40b3859b2184ef182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  watering: 0
+  hasStopped: 0
+  hasStarted: 0
 --- !u!82 &1957764791
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12810,7 +12816,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025765544}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04fffc7b546eaf448abca06f71a8c177, type: 3}
   m_Name: 
@@ -12850,7 +12856,7 @@ BoxCollider:
   m_GameObject: {fileID: 2025765544}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.81, y: 0.043487374, z: 0.81}
   m_Center: {x: 0, y: 0.022986801, z: 0}

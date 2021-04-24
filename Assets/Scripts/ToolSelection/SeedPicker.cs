@@ -13,9 +13,12 @@ public class SeedPicker : MonoBehaviour, IPointerDownHandler
     public Vector3 spriteFirstScale;
     public bool active;
 
+    public SwapTools tools;
+
     // Start is called before the first frame update
     void Start()
     {
+        tools = FindObjectOfType<SwapTools>();
         spriteFirstScale = spriteTransform.localScale;
         unselected = GetComponent<Image>().color;
     }
@@ -23,7 +26,7 @@ public class SeedPicker : MonoBehaviour, IPointerDownHandler
     // Update is called once per frame
     void Update()
     {
-        if (soilChecker.isActiveAndEnabled && soilChecker.tools.currentSeed == mySeed)
+        if (tools.currentTool == SwapTools.Tools.seed && tools.currentSeed == mySeed)
         {
             active = true;
         }
@@ -51,6 +54,7 @@ public class SeedPicker : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         GetComponent<Animator>().Play("Selected");
-        soilChecker.SwitchSeed(mySeed);
+        //soilChecker.SwitchSeed(mySeed);
+        tools.currentSeed = mySeed;
     }
 }

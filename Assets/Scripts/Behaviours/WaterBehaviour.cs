@@ -4,33 +4,50 @@ using UnityEngine;
 
 public class WaterBehaviour : MonoBehaviour
 {
-    bool hasStarted;
+    public bool watering, hasStopped, hasStarted;
+
+    ParticleSystem system;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        system = GetComponent<ParticleSystem>();
+        watering = false;
+        hasStopped = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (GetComponent<ParticleSystem>().isPlaying && !hasStarted)
-        //{
-        //    StopAllCoroutines();
-        //    StartCoroutine(FadeAudioIn());
-        //    hasStarted = true;
-        //}
-        //if(!GetComponent<ParticleSystem>().isPlaying && hasStarted)
-        //{
-        //    StopAllCoroutines();
-        //    StartCoroutine(FadeAudioOut());
-        //    hasStarted = false;
-        //}
+        UpdateParticleSystem();
+        watering = Input.GetMouseButton(0);
+        if (Input.GetMouseButton(0))
+        {
+            hasStopped = false;
+        }
+    }
+
+    void UpdateParticleSystem()
+    {
+        if(!watering && !hasStopped)
+        {
+            hasStarted = false;
+            Debug.Log("Stopping");
+            FadeInOut(false);
+            system.Stop();
+        }
+        else if (watering && !hasStarted)
+        {
+            Debug.Log("Started");
+            system.Play();
+            FadeInOut(true);
+            hasStarted = true;
+        }
     }
 
     public void FadeInOut(bool t)
     {
+        StopAllCoroutines();
         if (t)
         {
             StopAllCoroutines();
@@ -46,10 +63,11 @@ public class WaterBehaviour : MonoBehaviour
 
     public IEnumerator FadeAudioIn()
     {
+        hasStopped = false;
         AudioSource source = GetComponent<AudioSource>();
 
         //Make sure volume is 0
-        source.volume = 0;
+        //source.volume = 0;
 
         //Play music
         source.Play();
@@ -68,10 +86,11 @@ public class WaterBehaviour : MonoBehaviour
 
     public IEnumerator FadeAudioOut()
     {
+        hasStopped = true;
         AudioSource source = GetComponent<AudioSource>();
 
         //Make sure volume is 1
-        source.volume = 1;
+        //source.volume = 1;
 
         // Check Music Volume and Fade Out
         while (source.volume > 0.01f)

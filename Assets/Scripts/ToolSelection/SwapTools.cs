@@ -130,20 +130,20 @@ public class SwapTools : MonoBehaviour
     {
         foreach (GameObject obj in list)
         {
-            if (obj.GetComponent<ParticleSystem>())
-            {
-                if (t)
-                {
-                    obj.GetComponent<ParticleSystem>().Play();
-                    obj.GetComponent<WaterBehaviour>().FadeInOut(t);
-                }
-                else
-                {
-                    obj.GetComponent<ParticleSystem>().Stop();
-                    obj.GetComponent<WaterBehaviour>().FadeInOut(t);
-                }
-            }
-            else
+            //if (obj.GetComponent<ParticleSystem>())
+            //{
+            //    if (t)
+            //    {
+            //        obj.GetComponent<ParticleSystem>().Play();
+            //        obj.GetComponent<WaterBehaviour>().FadeInOut(t);
+            //    }
+            //    else
+            //    {
+            //        obj.GetComponent<ParticleSystem>().Stop();
+            //        obj.GetComponent<WaterBehaviour>().FadeInOut(t);
+            //    }
+            //}
+            //else
             {
                 obj.SetActive(t);
             }

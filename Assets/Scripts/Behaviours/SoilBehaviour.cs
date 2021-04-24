@@ -186,6 +186,10 @@ public class SoilBehaviour : MonoBehaviour
             Destroy(soilParticles, 1f);
             PickUpPlant(shovelDestroy);
         }
+        if (myStage == SoilStage.empty && FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.seed)
+        {
+            PlantSeed(tools.currentSeed);
+        }
     }
     public void PickUpPlant(AudioClip clip)
     {
