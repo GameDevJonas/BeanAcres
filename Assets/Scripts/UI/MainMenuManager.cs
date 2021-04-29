@@ -27,14 +27,17 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        StartCoroutine(LoadScene(1, 2f));
+        StartCoroutine(LoadScene(1,true, 2f));
     }
 
-    public IEnumerator LoadScene(int scene, float waitTime)
+    public IEnumerator LoadScene(int scene, bool doTransition, float waitTime)
     {
-        if (scene == 0) FindObjectOfType<TimeManager>().SwitchScene("Menu");
-        if (scene == 1) FindObjectOfType<TimeManager>().SwitchScene("LevelSelect");
-        if (scene == 2) FindObjectOfType<TimeManager>().SwitchScene("LevelSelect");
+        if (doTransition)
+        {
+            if (scene == 0) FindObjectOfType<TimeManager>().SwitchScene("Menu");
+            if (scene == 1) FindObjectOfType<TimeManager>().SwitchScene("LevelSelect");
+        }
+        //if (scene == 2) FindObjectOfType<TimeManager>().SwitchScene("Game");
         fader.SetBool("DoFade", true);
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(scene);
@@ -42,7 +45,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OpenCloseQuest()
     {
-        if(questBoard == null)
+        if (questBoard == null)
         {
             if (!GameObject.Find("QuestScreen"))
             {
@@ -60,7 +63,7 @@ public class MainMenuManager : MonoBehaviour
         ScoreScreen board = questBoard.GetComponent<ScoreScreen>();
 
         var currentQuest = FindObjectOfType<LevelQuests>().currentQuest;
-        if(currentQuest.carrot.goal < 1)
+        if (currentQuest.carrot.goal < 1)
         {
             board.myObjs[0].SetActive(false);
         }
@@ -68,7 +71,7 @@ public class MainMenuManager : MonoBehaviour
         {
             board.myObjs[0].GetComponentInChildren<TextMeshProUGUI>().text = "   " + currentQuest.carrot.goal;
         }
-        if(currentQuest.strawberry.goal < 1)
+        if (currentQuest.strawberry.goal < 1)
         {
             board.myObjs[1].SetActive(false);
         }
@@ -103,17 +106,22 @@ public class MainMenuManager : MonoBehaviour
             board.layoutGroup.padding.left = board.allActive;
         }
 
-        board.rewardText.text = ""+currentQuest.reward;
+        board.rewardText.text = "" + currentQuest.reward;
     }
 
     public void LoadFarmingGame()
     {
-        StartCoroutine(LoadScene(2, 2f));
+        StartCoroutine(LoadScene(2, false, 2f));
     }
 
-    public void Return()
+    public void ReturnToFarm()
     {
-        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex - 1, 2f));
+        StartCoroutine(LoadScene(1, false, 2f));
+    }
+
+    public void ReturnToMenu()
+    {
+        StartCoroutine(LoadScene(0, true, 2f));
     }
 
     public void Settings()

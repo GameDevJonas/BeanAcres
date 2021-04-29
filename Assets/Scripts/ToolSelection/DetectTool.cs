@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RDG;
 
 public class DetectTool : MonoBehaviour
 {
@@ -30,6 +31,7 @@ public class DetectTool : MonoBehaviour
                 detectedTool.GetComponent<Collider2D>().enabled = true;
                 detectedTool = null;
             }
+            Vibration.Vibrate(40, 120, true);
             detectToolSource.gameObject.SetActive(true);
             detectedTool = collision.GetComponent<ToolIcon>();
             detectedTool.isSelected = true;

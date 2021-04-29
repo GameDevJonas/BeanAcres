@@ -268,6 +268,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 676027745}
+        m_TargetAssemblyTypeName: VibrationMethods, Assembly-CSharp
+        m_MethodName: ButtonVibrate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &23061088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +416,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1426053179}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 676027745}
+        m_TargetAssemblyTypeName: VibrationMethods, Assembly-CSharp
+        m_MethodName: ButtonVibrate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -630,9 +654,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelQuests
       objectReference: {fileID: 0}
+    - target: {fileID: 1446268086557190394, guid: c3c0608e4e6027a498c5739d820625bb, type: 3}
+      propertyPath: questArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 63532c499520bcd4dbb072fd1b1a2ee6, type: 2}
     - target: {fileID: 1446268086557190395, guid: c3c0608e4e6027a498c5739d820625bb, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1446268086557190395, guid: c3c0608e4e6027a498c5739d820625bb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -864,6 +892,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1892920528}
         m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
         m_MethodName: UpdateSFXVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 676027745}
+        m_TargetAssemblyTypeName: VibrationMethods, Assembly-CSharp
+        m_MethodName: ShortLowVibration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1242,6 +1282,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 676027745}
+        m_TargetAssemblyTypeName: VibrationMethods, Assembly-CSharp
+        m_MethodName: ButtonVibrate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &553750956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,6 +1546,7 @@ GameObject:
   - component: {fileID: 676027743}
   - component: {fileID: 676027742}
   - component: {fileID: 676027741}
+  - component: {fileID: 676027745}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1584,6 +1637,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &676027745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676027740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393262b83493e5a46a7c77ae8921d4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &685123890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2941,6 +3006,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 676027745}
+        m_TargetAssemblyTypeName: VibrationMethods, Assembly-CSharp
+        m_MethodName: ShortLowVibration
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1511558589
 GameObject:
   m_ObjectHideFlags: 0
@@ -3191,7 +3268,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5184325609067439114, guid: 8d2688afca669294989ab60c456ef5fc, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 17c20e9a87d653143b4fe28919b9e500, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3342,49 +3419,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1794971654
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1794971656}
-  - component: {fileID: 1794971655}
-  m_Layer: 0
-  m_Name: DialogueTriggers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1794971655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794971654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c77931d51b139d44882e54657abbdf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1794971656
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794971654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.089867465, y: 0.36649203, z: 0.07319188}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1839113487
 GameObject:
@@ -3870,6 +3904,7 @@ GameObject:
   - component: {fileID: 2030865525}
   - component: {fileID: 2030865524}
   - component: {fileID: 2030865523}
+  - component: {fileID: 2030865526}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3942,6 +3977,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2030865526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030865522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393262b83493e5a46a7c77ae8921d4bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2071176321
 GameObject:
   m_ObjectHideFlags: 0
@@ -4235,7 +4282,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5184325609067439114, guid: 8d2688afca669294989ab60c456ef5fc, type: 2}
-  m_audioClip: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 17c20e9a87d653143b4fe28919b9e500, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4346,6 +4393,7 @@ GameObject:
   - component: {fileID: 2137939953}
   - component: {fileID: 2137939952}
   - component: {fileID: 2137939954}
+  - component: {fileID: 2137939955}
   m_Layer: 0
   m_Name: TimeManager
   m_TagString: Untagged
@@ -4381,9 +4429,9 @@ MonoBehaviour:
     mDayAMBX: {fileID: 8300000, guid: dfe13366e0be28344a1ea4e491a9fc60, type: 3}
     mNightAMBX: {fileID: 8300000, guid: 9e6770fc60fe9224cb851ae30c164033, type: 3}
     fDayMusic: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
-    fNightMusic: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
-    mDayMusic: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
-    mNightMusic: {fileID: 8300000, guid: a2b6e1334fd1e5442a666c924fc12ee7, type: 3}
+    fNightMusic: {fileID: 8300000, guid: c53ee8c26d51fa641a0542dba0e3cebd, type: 3}
+    mDayMusic: {fileID: 8300000, guid: 17c20e9a87d653143b4fe28919b9e500, type: 3}
+    mNightMusic: {fileID: 8300000, guid: 17c20e9a87d653143b4fe28919b9e500, type: 3}
 --- !u!4 &2137939953
 Transform:
   m_ObjectHideFlags: 0
@@ -4409,5 +4457,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2a6052328c70bc4faca38d699521b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2137939955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137939951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393262b83493e5a46a7c77ae8921d4bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

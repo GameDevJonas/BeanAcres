@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RDG;
 
 public class WaterBehaviour : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class WaterBehaviour : MonoBehaviour
         {
             hasStopped = false;
         }
+        if (watering) Vibration.Vibrate(40, 100);
+        else Vibration.Cancel();
     }
 
     void UpdateParticleSystem()

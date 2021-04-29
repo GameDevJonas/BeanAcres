@@ -123,12 +123,12 @@ public class TimeManager : MonoBehaviour
             if (scene == "Menu")
             {
                 audios.audioFader.SwitchClip(audios.dayAMBX, audios.nightAMBX, audios.mDayAMBX, audios.mNightAMBX);
-                //audios.audioFader.SwitchClip(audios.dayMusic, audios.nightMusic, audios.mDayMusic, audios.mNightMusic);
+                audios.audioFader.SwitchClip(audios.dayMusic, audios.nightMusic, audios.mDayMusic, audios.mNightMusic);
             }
             else if (scene == "LevelSelect")
             {
                 audios.audioFader.SwitchClip(audios.dayMusic, audios.nightMusic, audios.fDayMusic, audios.fNightMusic);
-                //audios.audioFader.SwitchClip(audios.dayMusic, audios.nightMusic, audios.fDayMusic, audios.fNightMusic);
+                audios.audioFader.SwitchClip(audios.dayMusic, audios.nightMusic, audios.fDayMusic, audios.fNightMusic);
             }
         }
         else
@@ -136,12 +136,12 @@ public class TimeManager : MonoBehaviour
             if (scene == "Menu")
             {
                 audios.audioFader.SwitchClip(audios.nightAMBX, audios.dayAMBX, audios.mNightAMBX, audios.mDayAMBX);
-                //audios.audioFader.SwitchClip(audios.nightMusic, audios.dayMusic, audios.mNightMusic, audios.mDayMusic);
+                audios.audioFader.SwitchClip(audios.nightMusic, audios.dayMusic, audios.mNightMusic, audios.mDayMusic);
             }
             else if (scene == "LevelSelect")
             {
                 audios.audioFader.SwitchClip(audios.nightAMBX, audios.dayAMBX, audios.fNightAMBX, audios.fDayAMBX);
-                //audios.audioFader.SwitchClip(audios.nightMusic, audios.dayMusic, audios.fNightMusic, audios.fDayMusic);
+                audios.audioFader.SwitchClip(audios.nightMusic, audios.dayMusic, audios.fNightMusic, audios.fDayMusic);
             }
         }
     }

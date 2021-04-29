@@ -2,18 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DialogueTriggers : MonoBehaviour
+public class DialogueTriggers
 {
-    public static bool firstDialogue;
+    public static bool firstDialogue = false;
 
-    void Start()
-    {
-        DontDestroyOnLoad(this);
-    }
+    //void Start()
+    //{
+    //    if (FindObjectsOfType<DialogueTriggers>().Length > 1) Destroy(this);
+    //    DontDestroyOnLoad(this);
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
+    //// Update is called once per frame
+    //void Update()
+    //{
         
-    }
+    //}
 }

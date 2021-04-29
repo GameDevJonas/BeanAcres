@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using RDG;
 
 public class SeedPicker : MonoBehaviour, IPointerDownHandler
 {
@@ -53,6 +54,7 @@ public class SeedPicker : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Vibration.Vibrate(50, 80, true);
         GetComponent<Animator>().Play("Selected");
         //soilChecker.SwitchSeed(mySeed);
         tools.currentSeed = mySeed;

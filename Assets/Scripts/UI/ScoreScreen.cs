@@ -62,6 +62,7 @@ public class ScoreScreen : MonoBehaviour
             newScore++;
             rewardText.text = "" + newReward;
             totalScoreText.text = "" + newScore;
+            manager.beanStalks = newScore;
             yield return new WaitForSeconds(.01f);
         }
         manager.NextQuest();

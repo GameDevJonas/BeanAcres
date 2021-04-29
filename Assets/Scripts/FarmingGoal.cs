@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using RDG;
 
 public class FarmingGoal : MonoBehaviour
 {
-    public List<QuestElements> questElements;
+    public List<QuestElements> questElements = new List<QuestElements>();
     public GameObject tutorialObj;
     // Start is called before the first frame update
     void Start()
@@ -70,6 +71,7 @@ public class FarmingGoal : MonoBehaviour
             case SwapTools.Plants.carrot:
                 if (!questElements[0].obj.activeInHierarchy) return;
                 var cInfo = questElements[0];
+                cInfo.obj.GetComponent<Animator>().Play("QuestUpdate");
                 cInfo.quantity++;
                 cInfo.scoreText.text = cInfo.quantity + "/" + cInfo.goal;
                 if (cInfo.quantity == cInfo.goal)
@@ -81,6 +83,7 @@ public class FarmingGoal : MonoBehaviour
             case SwapTools.Plants.strawberry:
                 if (!questElements[1].obj.activeInHierarchy) return;
                 var sInfo = questElements[1];
+                sInfo.obj.GetComponent<Animator>().Play("QuestUpdate");
                 sInfo.quantity++;
                 sInfo.scoreText.text = sInfo.quantity + "/" + sInfo.goal;
                 if (sInfo.quantity == sInfo.goal)
@@ -92,6 +95,7 @@ public class FarmingGoal : MonoBehaviour
             case SwapTools.Plants.aubergine:
                 if (!questElements[2].obj.activeInHierarchy) return;
                 var aInfo = questElements[2];
+                aInfo.obj.GetComponent<Animator>().Play("QuestUpdate");
                 aInfo.quantity++;
                 aInfo.scoreText.text = aInfo.quantity + "/" + aInfo.goal;
                 if (aInfo.quantity == aInfo.goal)
@@ -101,6 +105,7 @@ public class FarmingGoal : MonoBehaviour
                 }
                 break;
         }
+        Vibration.Vibrate(50, 80, true);
         CheckForDoneQuests();
     }
 
@@ -123,6 +128,7 @@ public class FarmingGoal : MonoBehaviour
 
     void TriggerDialogueNow()
     {
+        Vibration.Vibrate(300, 150, true);
         GetComponent<DialogueTrigger>().TriggerDialogue();
     }
 }

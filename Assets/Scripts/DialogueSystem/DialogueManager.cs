@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using RDG;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -77,6 +78,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger dTrigger)
     {
+        Vibration.Vibrate(200, 80, true);
         inDialogue = true;
         trigger = dTrigger;
         anim.SetTrigger("In");
@@ -108,7 +110,11 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence(bool fromButton)
     {
-        if (fromButton) continueButtonText.GetComponent<Animator>().Play("Text_Out");
+        if (fromButton)
+        {
+            Vibration.Vibrate(50, 80, true);
+            continueButtonText.GetComponent<Animator>().Play("Text_Out");
+        }
         if (fastForwarded)
         {
             return;
@@ -116,9 +122,17 @@ public class DialogueManager : MonoBehaviour
         if (!finishedSentence && fromButton && !fastForwarded)
         {
             StopAllCoroutines();
-            StartCoroutine(TypeSentence(currentSentence));
-            textSpeed = .00000000000001f;
-            fastForwarded = true;
+            //StartCoroutine(TypeSentence(currentSentence));
+            //textSpeed = .00000000000001f;
+            //fastForwarded = true;
+            animatorText.text = currentSentence;
+            if (sentences.Count == 0)
+            {
+                continueButtonText.text = "Tap to end";
+            } //If last sentence is next, change continue to end
+            continueButtonText.GetComponent<Animator>().Play("Text_In");
+            //voiceSource.Stop();
+            finishedSentence = true;
             //finishedSentence = true;
             return;
         }
@@ -127,6 +141,7 @@ public class DialogueManager : MonoBehaviour
 
         if (fromButton && sentences.Count > 0)
         {
+            Debug.Log("FROM BUTTON");
             continueSource.Play();
         }
 
@@ -182,7 +197,7 @@ public class DialogueManager : MonoBehaviour
             animatorText.text += letter;
             animatorText.UpdateText();
             voiceSource.clip = activeVoicePool[Random.Range(0, activeVoicePool.Count)];
-            voiceSource.pitch = Random.Range(.8f, 1.2f);
+            //voiceSource.pitch = Random.Range(.8f, 1.2f);
 
             if (inTag)
             {
@@ -190,7 +205,11 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                voiceSource.Play();
+                if (!voiceSource.isPlaying)
+                {
+                    voiceSource.Play();
+                    //Vibration.Vibrate(40, 20, true);
+                }
                 yield return new WaitForSeconds(textSpeed);
             }
 
@@ -210,6 +229,7 @@ public class DialogueManager : MonoBehaviour
     {
         //DialogueUI out
         StopAllCoroutines();
+        Vibration.Vibrate(200, 80, true);
         anim.SetTrigger("Out");
         currentDialogue = null;
         animatorText.text = " ";

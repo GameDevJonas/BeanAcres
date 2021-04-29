@@ -16,9 +16,12 @@ MonoBehaviour:
   dialogue:
   - sentence: Those plants look very happy and hydrated, great job!
     mood: 0
-  - sentence: Once a plant is fully grown, select the <color=#7DE264>garden glove</color>
-      from the wheel and <color=#7DE264>tap on them</color> to harvest.
+  - sentence: 'Once a plant is fully grown, select the <color=#7DE264>garden glove</color>
+      from the wheel. '
     mood: 1
+  - sentence: '<color=#7DE264>Hold</color> your finger on the plants, and drag up
+      when the arrow appears to harvest. '
+    mood: 2
   - sentence: <color=#E2BA64>On top of your screen</color> you see the job requirement.
       Right now you need <color=#7DE264>one of each vegetable</color> to complete
       this task.

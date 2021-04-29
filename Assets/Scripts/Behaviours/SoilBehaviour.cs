@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using RDG;
 
 public class SoilBehaviour : MonoBehaviour
 {
@@ -157,13 +159,13 @@ public class SoilBehaviour : MonoBehaviour
         isDry = false;
     }
 
-
     void PlantedState()
     {
         if (growTimer <= 0)
         {
             growTimer = GrowTimerSet;
             myStage = SoilStage.growing;
+            Vibration.Vibrate(40, 50, true);
             growthParticles.Play();
         }
         else if (!isDry)
@@ -172,15 +174,16 @@ public class SoilBehaviour : MonoBehaviour
         }
     }
 
+
     private void OnMouseDown()
     {
         if (isDone && FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.glove)
         {
-            tools.alphaScore += 10;
-            PickUpPlant(gloveHarvest);
+            GetComponent<HarvestingBehaviour>().enabled = true;
         }
         if (FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.shovel)
         {
+            Vibration.Vibrate(300, 150, true);
             GameObject.Find("ShovelHand").GetComponent<Animator>().Play("HoeAnim");
             GameObject soilParticles = Instantiate(dirtParticlePrefab, transform.position, Quaternion.identity);
             Destroy(soilParticles, 1f);
@@ -188,9 +191,27 @@ public class SoilBehaviour : MonoBehaviour
         }
         if (myStage == SoilStage.empty && FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.seed)
         {
+            Vibration.Vibrate(40, 50, true);
             PlantSeed(tools.currentSeed);
         }
     }
+
+    public void HarvestNow()
+    {
+        Vibration.Vibrate(300, 150, true);
+        GetComponent<Animator>().Play("Harvest");
+        tools.alphaScore += 10;
+        PickUpPlant(gloveHarvest);
+    }
+
+    private void OnMouseUp()
+    {
+        if (isDone && FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.glove)
+        {
+            //GetComponent<HarvestingBehaviour>().enabled = false;
+        }
+    }
+
     public void PickUpPlant(AudioClip clip)
     {
         quests.HarvestPlant(myPlant);
@@ -199,7 +220,7 @@ public class SoilBehaviour : MonoBehaviour
         myAudioSource.transform.parent = null;
         myAudioSource.Play();
         Destroy(myAudioSource.gameObject, 2f);
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, .3f);
     }
 
     void GrowingState()
@@ -208,6 +229,7 @@ public class SoilBehaviour : MonoBehaviour
         {
             growTimer = GrowTimerSet;
             myStage = SoilStage.done;
+            Vibration.Vibrate(40, 50, true);
             growthParticles.Play();
         }
         else if (!isDry)
