@@ -105,7 +105,8 @@ public class FarmingGoal : MonoBehaviour
                 }
                 break;
         }
-        Vibration.Vibrate(50, 80, true);
+        //Vibration.Vibrate(50, 80, true);
+        VibrationMethods.ShortLowVibration();
         CheckForDoneQuests();
     }
 

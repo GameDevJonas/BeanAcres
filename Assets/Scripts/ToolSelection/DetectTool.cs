@@ -31,7 +31,7 @@ public class DetectTool : MonoBehaviour
                 detectedTool.GetComponent<Collider2D>().enabled = true;
                 detectedTool = null;
             }
-            Vibration.Vibrate(40, 120, true);
+            VibrationMethods.ShortLowVibration();
             detectToolSource.gameObject.SetActive(true);
             detectedTool = collision.GetComponent<ToolIcon>();
             detectedTool.isSelected = true;

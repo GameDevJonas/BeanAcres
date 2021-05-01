@@ -29,7 +29,11 @@ public class RotateCircle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnPointerDown(PointerEventData eventData)
     {
         activator.ActivateMe();
+    }
 
+    private void OnMouseDown()
+    {
+        
     }
 
     public void OnBeginDrag(PointerEventData eventData)

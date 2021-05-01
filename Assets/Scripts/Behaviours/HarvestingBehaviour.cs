@@ -80,12 +80,14 @@ public class HarvestingBehaviour : MonoBehaviour, IPointerDownHandler, IDragHand
             timer += Time.deltaTime;
             harvestSliderTransform.position = Input.mousePosition;
             slider.fillAmount = timer / harvestingTime;
-            Vibration.Vibrate(40, 10, true);
+            //Vibration.Vibrate(40, 10, true);
+            //VibrationMethods.ShortLowVibration();
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        VibrationMethods.ShortLowVibration();
         inDrag = true;
         lastPosition = eventData.position;
     }

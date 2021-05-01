@@ -9,10 +9,19 @@ public class WaterBehaviour : MonoBehaviour
 
     ParticleSystem system;
 
+    ToolCircleActivator toolCircleCheck;
+
     // Start is called before the first frame update
     void Start()
     {
+        toolCircleCheck = FindObjectOfType<ToolCircleActivator>();
         system = GetComponent<ParticleSystem>();
+        watering = false;
+        hasStopped = false;
+    }
+
+    private void OnEnable()
+    {
         watering = false;
         hasStopped = false;
     }
@@ -20,28 +29,44 @@ public class WaterBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DialogueManager.inDialogue || toolCircleCheck.isTouching)
+        {
+            watering = false;
+            hasStopped = false;
+            return;
+        }
+
         UpdateParticleSystem();
         watering = Input.GetMouseButton(0);
         if (Input.GetMouseButton(0))
         {
             hasStopped = false;
         }
-        if (watering) Vibration.Vibrate(40, 100);
-        else Vibration.Cancel();
+        if (watering)
+        {
+            //Vibration.Vibrate(40, 100);
+            //VibrationMethods.ShortLowVibration();
+        }
+        else
+        {
+            //Vibration.Cancel();}
+        }
     }
 
     void UpdateParticleSystem()
     {
-        if(!watering && !hasStopped)
+        if (!watering && !hasStopped)
         {
+            VibrationMethods.ShortLowVibration();
             hasStarted = false;
-            Debug.Log("Stopping");
+            //Debug.Log("Stopping");
             FadeInOut(false);
             system.Stop();
         }
         else if (watering && !hasStarted)
         {
-            Debug.Log("Started");
+            VibrationMethods.ShortLowVibration();
+            //Debug.Log("Started");
             system.Play();
             FadeInOut(true);
             hasStarted = true;

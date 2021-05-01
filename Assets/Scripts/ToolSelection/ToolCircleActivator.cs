@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ToolCircleActivator : MonoBehaviour
+public class ToolCircleActivator : MonoBehaviour, IPointerDownHandler
 {
     public Animator myAnim;
 
@@ -33,6 +34,11 @@ public class ToolCircleActivator : MonoBehaviour
                 idleTimer -= Time.deltaTime;
             }
         }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ActivateMe();
     }
 
     public void ActivateMe()

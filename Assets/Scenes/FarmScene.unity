@@ -5305,7 +5305,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26.9, y: 0}
+  m_AnchoredPosition: {x: -26.900024, y: 0}
   m_SizeDelta: {x: 49.369083, y: 51.26183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1762067770
@@ -6465,7 +6465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -6735,17 +6735,17 @@ RectTransform:
   m_GameObject: {fileID: 2067829502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8.198565, y: 8.198565, z: 8.198565}
+  m_LocalScale: {x: 3.4117415, y: 3.4117415, z: 3.4117415}
   m_Children:
   - {fileID: 1762067769}
   - {fileID: 2031308411}
   m_Father: {fileID: 2026508745}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -74, y: 0}
-  m_SizeDelta: {x: 100, y: 46.986694}
+  m_AnchoredPosition: {x: -42, y: 0}
+  m_SizeDelta: {x: -700, y: 46.986694}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2067829504
 MonoBehaviour:
@@ -8513,6 +8513,7 @@ MonoBehaviour:
   allActive: -155
   rewardText: {fileID: 3201885327526499741}
   totalScoreText: {fileID: 3201885327639987194}
+  continueButton: {fileID: 0}
 --- !u!224 &3201885327709121699
 RectTransform:
   m_ObjectHideFlags: 0

@@ -78,7 +78,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger dTrigger)
     {
-        Vibration.Vibrate(200, 80, true);
+        //Vibration.Vibrate(200, 80, true);
+        VibrationMethods.ShortLowVibration();
         inDialogue = true;
         trigger = dTrigger;
         anim.SetTrigger("In");
@@ -112,7 +113,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (fromButton)
         {
-            Vibration.Vibrate(50, 80, true);
+            //Vibration.Vibrate(50, 80, true);
+            VibrationMethods.ShortLowVibration();
             continueButtonText.GetComponent<Animator>().Play("Text_Out");
         }
         if (fastForwarded)
@@ -141,7 +143,7 @@ public class DialogueManager : MonoBehaviour
 
         if (fromButton && sentences.Count > 0)
         {
-            Debug.Log("FROM BUTTON");
+            //Debug.Log("FROM BUTTON");
             continueSource.Play();
         }
 
@@ -229,7 +231,8 @@ public class DialogueManager : MonoBehaviour
     {
         //DialogueUI out
         StopAllCoroutines();
-        Vibration.Vibrate(200, 80, true);
+        //Vibration.Vibrate(200, 80, true);
+        VibrationMethods.ShortLowVibration();
         anim.SetTrigger("Out");
         currentDialogue = null;
         animatorText.text = " ";

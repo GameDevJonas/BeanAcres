@@ -10,18 +10,23 @@ public class VibrationMethods : MonoBehaviour
         
     }
 
-    public void ShortLowVibration()
+    public static void ShortLowVibration()
     {
         Vibration.Vibrate(40, 50, true);
+        //Handheld.Vibrate();
     }
 
     public void ButtonVibrate()
     {
-        Vibration.Vibrate(50, 80, true);
+        Vibration.Vibrate(40, 50, true);
+        //Vibration.Vibrate(50, 80, true);
+        //Handheld.Vibrate();
     }
 
     public void ToolVibration()
     {
-        Vibration.Vibrate(300, 150, true);
+        Vibration.Vibrate(40, 50, true);
+        //Vibration.Vibrate(300, 150, true);
+        //Handheld.Vibrate();
     }
 }

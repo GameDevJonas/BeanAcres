@@ -11,10 +11,12 @@ public class ScoreScreen : MonoBehaviour
     public int oneActive, twoActive, allActive;
     public TextMeshProUGUI rewardText, totalScoreText;
     LevelQuests manager;
+    public GameObject continueButton;
 
     // Start is called before the first frame update
     void Start()
     {
+        continueButton.GetComponent<Button>().interactable = false;
         manager = FindObjectOfType<LevelQuests>();
         rewardText.text = "" + manager.currentQuest.reward;
         totalScoreText.text = "" + manager.beanStalks;
@@ -42,7 +44,7 @@ public class ScoreScreen : MonoBehaviour
         {
             layoutGroup.padding.left = allActive;
         }
-        Invoke("RewardRoutine", 1f);
+        Invoke("RewardRoutine", .5f);
     }
 
     void RewardRoutine()
@@ -53,18 +55,18 @@ public class ScoreScreen : MonoBehaviour
     public IEnumerator AddReward(int scoreBefore, int reward)
     {
         int newScore = scoreBefore;
-        FindObjectOfType<LevelQuests>().beanStalks = newScore;
         int newReward = reward;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(.5f);
         while(newScore != scoreBefore + reward)
         {
             newReward--;
             newScore++;
             rewardText.text = "" + newReward;
             totalScoreText.text = "" + newScore;
-            manager.beanStalks = newScore;
             yield return new WaitForSeconds(.01f);
         }
+        continueButton.GetComponent<Button>().interactable = true;
+        FindObjectOfType<LevelQuests>().beanStalks = newScore;
         manager.NextQuest();
         StopAllCoroutines();
     }

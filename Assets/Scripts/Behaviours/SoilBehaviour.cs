@@ -27,6 +27,8 @@ public class SoilBehaviour : MonoBehaviour
     public SpriteRenderer mySprite;
     public GameObject dirtParticlePrefab;
 
+    public GameObject waterMeObj;
+
     public AudioSource myAudioSource;
     public AudioClip gloveHarvest, shovelDestroy;
 
@@ -38,6 +40,7 @@ public class SoilBehaviour : MonoBehaviour
 
     void Start()
     {
+        waterMeObj.SetActive(false);
         tools = FindObjectOfType<SwapTools>();
         quests = FindObjectOfType<FarmingGoal>();
         myStage = SoilStage.empty;
@@ -126,9 +129,14 @@ public class SoilBehaviour : MonoBehaviour
         if (isDry)
         {
             mySprite.sprite = drySprite;
+            if(myStage != SoilStage.empty && myStage != SoilStage.done)
+            {
+                waterMeObj.SetActive(true);
+            }
         }
         else
         {
+            waterMeObj.SetActive(false);
             mySprite.sprite = wateredSprite;
         }
     }
@@ -148,6 +156,7 @@ public class SoilBehaviour : MonoBehaviour
 
     public void PlantSeed(SwapTools.Plants plant)
     {
+        VibrationMethods.ShortLowVibration();
         myPlant = plant;
         growTimer = GrowTimerSet;
         myStage = SoilStage.planted;
@@ -165,7 +174,8 @@ public class SoilBehaviour : MonoBehaviour
         {
             growTimer = GrowTimerSet;
             myStage = SoilStage.growing;
-            Vibration.Vibrate(40, 50, true);
+            //Vibration.Vibrate(40, 50, true);
+            VibrationMethods.ShortLowVibration();
             growthParticles.Play();
         }
         else if (!isDry)
@@ -183,22 +193,25 @@ public class SoilBehaviour : MonoBehaviour
         }
         if (FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.shovel)
         {
-            Vibration.Vibrate(300, 150, true);
+            //Vibration.Vibrate(300, 150, true);
+            VibrationMethods.ShortLowVibration();
             GameObject.Find("ShovelHand").GetComponent<Animator>().Play("HoeAnim");
             GameObject soilParticles = Instantiate(dirtParticlePrefab, transform.position, Quaternion.identity);
             Destroy(soilParticles, 1f);
-            PickUpPlant(shovelDestroy);
+            ShovelMe(shovelDestroy);
         }
         if (myStage == SoilStage.empty && FindObjectOfType<SwapTools>().currentTool == SwapTools.Tools.seed)
         {
-            Vibration.Vibrate(40, 50, true);
+            //Vibration.Vibrate(40, 50, true);
+            VibrationMethods.ShortLowVibration();
             PlantSeed(tools.currentSeed);
         }
     }
 
     public void HarvestNow()
     {
-        Vibration.Vibrate(300, 150, true);
+        //Vibration.Vibrate(300, 150, true);
+        VibrationMethods.ShortLowVibration();
         GetComponent<Animator>().Play("Harvest");
         tools.alphaScore += 10;
         PickUpPlant(gloveHarvest);
@@ -222,14 +235,26 @@ public class SoilBehaviour : MonoBehaviour
         Destroy(myAudioSource.gameObject, 2f);
         Destroy(this.gameObject, .3f);
     }
+    public void ShovelMe(AudioClip clip)
+    {
+        myAudioSource.pitch = Random.Range(0.8f, 1.3f);
+        myAudioSource.clip = clip;
+        myAudioSource.transform.parent = null;
+        myAudioSource.Play();
+        Destroy(myAudioSource.gameObject, 2f);
+        Destroy(this.gameObject, .3f);
+    }
 
     void GrowingState()
     {
         if (growTimer <= 0)
         {
             growTimer = GrowTimerSet;
+            GetComponent<BoxCollider>().size = new Vector3(1.3f, 1.15f, 0.36f);
+            GetComponent<BoxCollider>().center = new Vector3(0, 0.45f, 0);
             myStage = SoilStage.done;
-            Vibration.Vibrate(40, 50, true);
+            //Vibration.Vibrate(40, 50, true);
+            VibrationMethods.ShortLowVibration();
             growthParticles.Play();
         }
         else if (!isDry)

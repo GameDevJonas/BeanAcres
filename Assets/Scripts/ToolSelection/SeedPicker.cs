@@ -54,7 +54,8 @@ public class SeedPicker : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Vibration.Vibrate(50, 80, true);
+        //Vibration.Vibrate(50, 80, true);
+        VibrationMethods.ShortLowVibration();
         GetComponent<Animator>().Play("Selected");
         //soilChecker.SwitchSeed(mySeed);
         tools.currentSeed = mySeed;

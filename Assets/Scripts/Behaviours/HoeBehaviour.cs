@@ -37,6 +37,7 @@ public class HoeBehaviour : MonoBehaviour
     {
         if (placementPoseIsValid)
         {
+            VibrationMethods.ShortLowVibration();
             anim.Play("HoeAnim");
             Instantiate(objToPlace, PlacementPose.position, PlacementPose.rotation);
         }
